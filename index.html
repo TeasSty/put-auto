@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Путь Авто — авто из Японии, Кореи и Китая под заказ | Иркутск</title>
   <meta name="description" content="Путь Авто, Иркутск: подбор, ставка на аукционе, таможня и доставка авто из Японии, Южной Кореи и Китая. Фикс услуг в договоре. Выдача в ТЦ «Пассаж»." />
-  <meta name="theme-color" content="#0E1114" />
+  <meta name="theme-color" content="#121110" />
   <link rel="canonical" href="https://teassty.github.io/put-auto/" />
 
   <meta property="og:type" content="website" />
@@ -23,43 +23,27 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            asphalt: '#0E1114',
-            paper: '#E8E4DC',
-            signal: '#C45C26',
-            mute: '#8A8680',
-            panel: '#161A1E',
-            line: 'rgba(232,228,220,0.12)',
-          },
-          fontFamily: {
-            display: ['Syne', 'system-ui', 'sans-serif'],
-            sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
-          },
-        },
-      },
-    };
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Instrument+Serif:ital@0;1&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --asphalt: #0E1114;
-      --paper: #E8E4DC;
-      --signal: #C45C26;
-      --mute: #8A8680;
-      --panel: #161A1E;
-      --line: rgba(232, 228, 220, 0.12);
-      --glass: rgba(14, 17, 20, 0.72);
-      --radius-sm: 2px;
-      --radius-md: 6px;
-      --focus: 0 0 0 2px var(--asphalt), 0 0 0 4px var(--signal);
+      --ink: #1a1814;
+      --asphalt: #121110;
+      --carbon: #2a2723;
+      --paper: #f0e9dc;
+      --paper-2: #e4dccb;
+      --mute: #6e6a62;
+      --mute-on-dark: #9a958c;
+      --line-dark: rgba(240, 233, 220, 0.14);
+      --line-paper: rgba(26, 24, 20, 0.16);
+      --seal: #8f3f24;
+      --seal-deep: #6f301c;
+      --focus: 0 0 0 2px var(--paper), 0 0 0 4px var(--seal);
+      --shell: min(1120px, calc(100% - 2.5rem));
+      --shell-wide: min(1360px, calc(100% - 1.25rem));
+      --font-display: "Instrument Serif", "Times New Roman", serif;
+      --font-body: "Public Sans", system-ui, sans-serif;
+      --font-route: "Barlow Condensed", "Arial Narrow", sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -77,317 +61,685 @@
       margin: 0;
       background: var(--asphalt);
       color: var(--paper);
-      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      font-family: var(--font-body);
+      font-size: 1.02rem;
       line-height: 1.55;
       overflow-x: clip;
       max-width: 100%;
     }
 
-    ::selection { background: var(--signal); color: #fff; }
-
+    ::selection { background: var(--seal); color: #fff; }
     a { color: inherit; }
-    a:hover { color: var(--signal); }
+    a:hover { color: #d4a090; }
+    img, picture, iframe, video, svg { max-width: 100%; }
     :focus { outline: none; }
     :focus-visible { outline: none; box-shadow: var(--focus); }
 
-    .font-display { font-family: Syne, system-ui, sans-serif; letter-spacing: -0.02em; }
-
-    .grain {
-      pointer-events: none;
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .sr-only:focus {
       position: fixed;
-      inset: 0;
-      z-index: 80;
-      opacity: 0.045;
-      mix-blend-mode: overlay;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      left: 1rem;
+      top: 1rem;
+      z-index: 100;
+      width: auto;
+      height: auto;
+      margin: 0;
+      clip: auto;
+      padding: 0.65rem 0.9rem;
+      background: var(--seal);
+      color: #fff;
+      white-space: normal;
     }
 
-    .site-header {
+    .shell {
+      width: var(--shell);
+      margin-inline: auto;
+    }
+    .shell--wide {
+      width: var(--shell-wide);
+      margin-inline: auto;
+    }
+
+    .font-display { font-family: var(--font-display); font-weight: 400; }
+    .font-route {
+      font-family: var(--font-route);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .tabular { font-variant-numeric: tabular-nums; }
+
+    /* —— Header: ink masthead, not glass —— */
+    .masthead {
       position: sticky;
       top: 0;
       z-index: 60;
-      backdrop-filter: blur(16px) saturate(1.2);
-      -webkit-backdrop-filter: blur(16px) saturate(1.2);
-      background: var(--glass);
-      border-bottom: 1px solid var(--line);
+      background: var(--asphalt);
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .masthead__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 0;
+    }
+    .masthead__mark {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .masthead__mark:hover { color: var(--paper); }
+    .masthead__meta {
+      display: none;
+      font-family: var(--font-route);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      color: var(--mute-on-dark);
+      text-transform: uppercase;
+    }
+    .nav-desktop {
+      display: none;
+      gap: 1.35rem;
+      align-items: center;
+    }
+    .nav-desktop a {
+      font-size: 0.88rem;
+      color: var(--mute-on-dark);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .nav-desktop a:hover {
+      color: var(--paper);
+      border-bottom-color: var(--line-dark);
+    }
+    .masthead__actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .masthead__wa {
+      display: none;
+      font-family: var(--font-route);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--paper);
+      border-bottom: 1px solid var(--seal);
+      padding-bottom: 0.1rem;
+    }
+    .masthead__wa:hover { color: #d4a090; }
+    .menu-btn {
+      appearance: none;
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid var(--line-dark);
+      font: inherit;
+      font-size: 0.85rem;
+      padding: 0.45rem 0.7rem;
+      cursor: pointer;
+    }
+    .mobile-nav {
+      display: none;
+      border-top: 1px solid var(--line-dark);
+      padding: 0.5rem 0 0.85rem;
+    }
+    .mobile-nav.is-open { display: grid; gap: 0; }
+    .mobile-nav a {
+      padding: 0.75rem 0;
+      text-decoration: none;
+      border-bottom: 1px solid var(--line-dark);
+      color: var(--paper);
+      font-size: 1rem;
+    }
+    @media (min-width: 880px) {
+      .masthead__meta { display: block; }
+      .nav-desktop { display: flex; }
+      .masthead__wa { display: inline; }
+      .menu-btn { display: none; }
     }
 
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #3ecf6a;
-      box-shadow: 0 0 0 0 rgba(62, 207, 106, 0.55);
-      animation: pulse 2s ease-out infinite;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(62, 207, 106, 0.55); }
-      70% { box-shadow: 0 0 0 10px rgba(62, 207, 106, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(62, 207, 106, 0); }
-    }
-
+    /* —— Buttons —— */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       min-height: 48px;
-      padding: 0.75rem 1.25rem;
-      background: var(--signal);
+      padding: 0.8rem 1.35rem;
+      background: var(--seal);
       color: #fff !important;
+      font-family: var(--font-route);
       font-weight: 600;
       font-size: 0.95rem;
-      border: 1px solid transparent;
-      border-radius: var(--radius-sm);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       text-decoration: none;
-      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      border: 1px solid var(--seal);
+      transition: background 0.2s ease, border-color 0.2s ease;
     }
-    .btn:hover { background: #d4682e; color: #fff !important; transform: translateY(-1px); }
+    .btn:hover { background: var(--seal-deep); border-color: var(--seal-deep); color: #fff !important; }
     .btn--ghost {
       background: transparent;
       color: var(--paper) !important;
-      border-color: var(--line);
+      border-color: var(--line-dark);
     }
-    .btn--ghost:hover { border-color: var(--signal); color: var(--signal) !important; background: transparent; }
+    .btn--ghost:hover {
+      border-color: rgba(240, 233, 220, 0.45);
+      background: transparent;
+      color: var(--paper) !important;
+    }
+    .btn--ink {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--paper) !important;
+    }
+    .btn--ink:hover { background: #000; border-color: #000; }
     .btn--block { width: 100%; }
 
+    /* —— Hero: magazine cover —— */
     .hero {
       position: relative;
-      min-height: min(100svh, 920px);
+      min-height: min(100svh, 940px);
       display: grid;
-      align-items: end;
+      grid-template-rows: auto 1fr auto;
       isolation: isolate;
+      overflow: hidden;
     }
     .hero__media {
       position: absolute;
       inset: 0;
       z-index: -2;
     }
-    .hero__media picture {
+    .hero__media picture,
+    .hero__media img {
       display: block;
       width: 100%;
       height: 100%;
-    }
-    .hero__media img {
-      width: 100%;
-      height: 100%;
       object-fit: cover;
-      object-position: 58% 40%;
+      object-position: 58% 38%;
+      max-width: none;
     }
     .hero__veil {
       position: absolute;
       inset: 0;
       z-index: -1;
       background:
-        linear-gradient(180deg, rgba(14,17,20,0.35) 0%, rgba(14,17,20,0.55) 42%, rgba(14,17,20,0.96) 100%),
-        linear-gradient(90deg, rgba(14,17,20,0.85) 0%, rgba(14,17,20,0.35) 55%, rgba(14,17,20,0.55) 100%);
+        linear-gradient(180deg, rgba(18,17,16,0.55) 0%, rgba(18,17,16,0.15) 35%, rgba(18,17,16,0.55) 68%, rgba(18,17,16,0.96) 100%),
+        linear-gradient(90deg, rgba(18,17,16,0.72) 0%, rgba(18,17,16,0.2) 55%, rgba(18,17,16,0.45) 100%);
     }
-    .hero__brand {
-      font-family: Syne, system-ui, sans-serif;
-      font-weight: 800;
-      font-size: clamp(2.6rem, 9vw, 5.5rem);
-      line-height: 0.92;
-      letter-spacing: -0.04em;
-      margin: 0 0 1rem;
-      color: var(--paper);
-    }
-    .hero__brand span { color: var(--signal); }
-    .hero__cta {
+    .hero__issue {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.75rem;
-    }
-    .hero__cta .btn {
-      flex: 1 1 auto;
-      min-width: min(100%, 12rem);
-    }
-    @media (min-width: 769px) {
-      .hero__cta .btn { white-space: nowrap; }
-    }
-    .hero__lede-short { display: none; }
-    .hero__content {
-      position: relative;
-      padding-top: clamp(5.5rem, 14vw, 9rem);
-      padding-bottom: clamp(2.5rem, 5vw, 4rem);
-    }
-    .hero__title {
-      font-size: clamp(1.35rem, 3.8vw, 2.15rem);
-      line-height: 1.35;
-      overflow-wrap: break-word;
-      word-break: normal;
-      white-space: normal;
-      max-width: 100%;
-    }
-    .lede {
-      color: var(--mute);
-      overflow-wrap: break-word;
-      white-space: normal;
-      max-width: min(38rem, 100%);
-      margin: 0.75rem 0 0;
-    }
-
-    .section { padding: clamp(4rem, 8vw, 7rem) 0; }
-    .eyebrow {
-      font-size: 0.75rem;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.15rem 0 0;
+      font-family: var(--font-route);
+      font-size: 0.78rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--signal);
-      margin: 0 0 0.75rem;
-      font-weight: 600;
+      color: rgba(240, 233, 220, 0.78);
+      border-bottom: 1px solid rgba(240, 233, 220, 0.22);
+      padding-bottom: 0.75rem;
+      margin: 1.25rem auto 0;
+      width: var(--shell);
     }
-
-    .trust-rail {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
-      gap: 1px;
-      background: var(--line);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+    .hero__stage {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(2rem, 8vw, 5rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+      width: var(--shell);
+      margin-inline: auto;
     }
-    .trust-rail > * {
-      background: var(--asphalt);
-      padding: 1.25rem 1.1rem;
+    .hero__brand {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(4.2rem, 16vw, 9.5rem);
+      line-height: 0.82;
+      letter-spacing: -0.045em;
+      max-width: 11ch;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.25);
     }
-    .trust-rail strong {
+    .hero__brand em {
+      font-style: italic;
+      font-weight: 400;
       display: block;
-      font-family: Syne, system-ui, sans-serif;
-      font-size: clamp(1.35rem, 3vw, 1.85rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
+      margin-left: 0.08em;
     }
-    .trust-rail span { color: var(--mute); font-size: 0.85rem; }
-    @media (max-width: 900px) {
-      .trust-rail { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 520px) {
-      .trust-rail { grid-template-columns: 1fr; }
-    }
-
-    .path-track {
+    .hero__bottom {
       display: grid;
-      gap: 0;
-      border-left: 1px solid var(--line);
-      margin-left: 0.35rem;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 1.5rem 2rem;
+      align-items: end;
+      width: var(--shell);
+      margin: 0 auto 1.75rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(240, 233, 220, 0.22);
     }
-    .path-step {
-      display: grid;
-      grid-template-columns: 7.5rem 1fr;
-      gap: 1rem;
-      padding: 1.15rem 0 1.15rem 1.25rem;
-      position: relative;
+    .hero__lede {
+      margin: 0;
+      max-width: 34rem;
+      color: rgba(240, 233, 220, 0.86);
+      font-size: clamp(1rem, 2.1vw, 1.15rem);
+      line-height: 1.5;
     }
-    .path-step::before {
-      content: "";
+    .hero__lede-short { display: none; }
+    .hero__cta {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.65rem;
+      justify-self: end;
+      width: min(100%, 16rem);
+    }
+    .hero h1 {
       position: absolute;
-      left: -4px;
-      top: 1.45rem;
-      width: 7px;
-      height: 7px;
-      background: var(--signal);
-      border-radius: 1px;
-    }
-    .path-step__code {
-      font-family: ui-monospace, "IBM Plex Mono", monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      color: var(--mute);
-      padding-top: 0.25rem;
-    }
-    .path-step h3 { margin: 0 0 0.35rem; font-size: 1.1rem; font-family: Syne, system-ui, sans-serif; }
-    .path-step p { margin: 0; color: var(--mute); max-width: 36rem; }
-    @media (max-width: 640px) {
-      .path-step { grid-template-columns: 1fr; gap: 0.35rem; }
-    }
-
-    .services-board {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      grid-template-areas:
-        "select bid"
-        "detail customs"
-        "deal deal";
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-    }
-    .service-cell {
-      background: var(--panel);
-      padding: clamp(1.25rem, 3vw, 2rem);
-      position: relative;
+      width: 1px;
+      height: 1px;
       overflow: hidden;
-      --mx: 50%;
-      --my: 50%;
+      clip: rect(0,0,0,0);
     }
-    .service-cell::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(420px circle at var(--mx) var(--my), rgba(196,92,38,0.14), transparent 45%);
-      opacity: 0;
-      transition: opacity 0.35s ease;
-      pointer-events: none;
-    }
-    .service-cell:hover::after { opacity: 1; }
-    .service-cell--select { grid-area: select; }
-    .service-cell--bid { grid-area: bid; }
-    .service-cell--customs { grid-area: customs; }
-    .service-cell--detail { grid-area: detail; }
-    .service-cell--deal { grid-area: deal; }
-    .service-cell h3 {
-      margin: 0 0 0.65rem;
-      font-family: Syne, system-ui, sans-serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.55rem);
-    }
-    .service-cell p { margin: 0; color: var(--mute); max-width: 42rem; }
-    .service-cell .mono-tag {
-      font-family: ui-monospace, monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      color: var(--signal);
-      margin-bottom: 1rem;
-    }
-    @media (max-width: 800px) {
-      .services-board {
+    @media (max-width: 760px) {
+      .hero {
+        min-height: 100svh;
+        min-height: 100dvh;
+        padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
+      }
+      .hero__media img { object-position: 48% 28%; }
+      .hero__issue {
+        flex-wrap: wrap;
+        row-gap: 0.35rem;
+        font-size: 0.7rem;
+        margin-top: 0.85rem;
+      }
+      .hero__brand {
+        font-size: clamp(3.4rem, 18vw, 4.6rem);
+        max-width: none;
+      }
+      .hero__brand em { display: inline; margin-left: 0.15em; }
+      .hero__bottom {
         grid-template-columns: 1fr;
-        grid-template-areas:
-          "select"
-          "bid"
-          "customs"
-          "detail"
-          "deal";
+        gap: 1.15rem;
+        margin-bottom: 1rem;
+      }
+      .hero__lede-full { display: none; }
+      .hero__lede-short { display: inline; }
+      .hero__cta {
+        width: 100%;
+        justify-self: stretch;
       }
     }
 
-    .calc-shell {
+    /* —— Fact strip: typeset like form fields —— */
+    .facts {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line-dark);
+      border-bottom: 1px solid var(--line-dark);
     }
-    .calc-panel, .calc-result {
-      background: var(--panel);
-      padding: clamp(1.25rem, 3vw, 2rem);
+    .facts > * {
+      padding: 1.15rem 1.1rem;
+      border-right: 1px solid var(--line-dark);
     }
-    .field { margin-bottom: 1.15rem; }
-    .field label {
+    .facts > *:last-child { border-right: 0; }
+    .facts__label {
       display: block;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
+      font-family: var(--font-route);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mute-on-dark);
+      margin-bottom: 0.45rem;
+    }
+    .facts strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      font-variant-numeric: tabular-nums;
+    }
+    @media (max-width: 900px) {
+      .facts { grid-template-columns: 1fr 1fr; }
+      .facts > *:nth-child(2n) { border-right: 0; }
+      .facts > *:nth-child(-n+2) { border-bottom: 1px solid var(--line-dark); }
+    }
+    @media (max-width: 520px) {
+      .facts { grid-template-columns: 1fr; }
+      .facts > * {
+        border-right: 0;
+        border-bottom: 1px solid var(--line-dark);
+      }
+      .facts > *:last-child { border-bottom: 0; }
+      .facts > *:nth-child(-n+2) { border-bottom: 1px solid var(--line-dark); }
+    }
+
+    /* —— Paper band —— */
+    .paper-band {
+      background-color: var(--paper);
+      color: var(--ink);
+      position: relative;
+    }
+    .paper-band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .paper-band a:hover { color: var(--seal); }
+
+    .block {
+      padding: clamp(3.5rem, 8vw, 6.5rem) 0;
+    }
+    .block--tight { padding: clamp(2.75rem, 6vw, 4.5rem) 0; }
+
+    .kicker {
+      margin: 0 0 0.65rem;
+      font-family: var(--font-route);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--mute);
-      margin-bottom: 0.5rem;
+    }
+    .paper-band .kicker { color: var(--mute); }
+    .asphalt-band .kicker { color: var(--mute-on-dark); }
+
+    .headline {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 16ch;
+    }
+    .headline--wide { max-width: 22ch; }
+    .lede {
+      margin: 0.9rem 0 0;
+      max-width: 36rem;
+      color: var(--mute-on-dark);
+      font-size: 1.02rem;
+    }
+    .paper-band .lede { color: var(--mute); }
+
+    .sec-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2rem;
+      align-items: end;
+      margin-bottom: clamp(2rem, 5vw, 3.25rem);
+    }
+    .sec-head--stack {
+      grid-template-columns: 1fr;
+      max-width: 40rem;
+    }
+    .sec-head .lede { margin-top: 0; }
+    @media (max-width: 760px) {
+      .sec-head { grid-template-columns: 1fr; gap: 0.75rem; }
+      .sec-head .lede { margin-top: 0.25rem; }
+    }
+
+    /* —— Route spine (services + path merged as timeline) —— */
+    .spine {
+      position: relative;
+      display: grid;
+      gap: 0;
+    }
+    .spine__line {
+      position: absolute;
+      left: 0.55rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 1px;
+      background: var(--line-paper);
+      transform-origin: top;
+    }
+    .spine__line > span {
+      display: block;
+      width: 100%;
+      height: 0%;
+      background: var(--seal);
+      transform-origin: top;
+    }
+    .spine-item {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      gap: 1rem 1.35rem;
+      padding: 1.35rem 0 1.35rem 1.75rem;
+      position: relative;
+      border-bottom: 1px solid var(--line-paper);
+    }
+    .spine-item:last-child { border-bottom: 0; }
+    .spine-item::before {
+      content: "";
+      position: absolute;
+      left: 0.35rem;
+      top: 1.65rem;
+      width: 9px;
+      height: 9px;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .spine-item.is-active::before {
+      background: var(--seal);
+      border-color: var(--seal);
+    }
+    .spine-item__code {
+      font-family: var(--font-route);
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      color: var(--mute);
+      padding-top: 0.15rem;
+    }
+    .spine-item h3 {
+      margin: 0 0 0.35rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .spine-item p {
+      margin: 0;
+      color: var(--mute);
+      max-width: 38rem;
+      font-size: 0.98rem;
+    }
+    @media (max-width: 640px) {
+      .spine-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+        padding-left: 1.65rem;
+      }
+    }
+
+    /* —— Cases: horizontal auction sheet strip —— */
+    .lots-wrap {
+      margin-right: calc(50% - 50vw);
+      margin-left: 0;
+    }
+    .lots {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0.25rem calc(50vw - 50%) 1rem 0;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--mute-on-dark) transparent;
+    }
+    .lot {
+      flex: 0 0 min(78vw, 320px);
+      scroll-snap-align: start;
+      background: var(--carbon);
+      border: 1px solid var(--line-dark);
+      display: grid;
+      grid-template-rows: auto 1fr;
+      min-width: 0;
+    }
+    .lot:nth-child(3n) { flex-basis: min(86vw, 380px); }
+    .lot__sheet {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.65rem 0.8rem;
+      border-bottom: 1px solid var(--line-dark);
+      font-family: var(--font-route);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mute-on-dark);
+    }
+    .lot__sheet b {
+      color: var(--paper);
+      font-weight: 600;
+    }
+    .lot__media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #0a0908;
+    }
+    .lot__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .lot__body {
+      padding: 0.9rem 0.9rem 1.1rem;
+      border-top: 1px dashed var(--line-dark);
+    }
+    .lot__route {
+      font-family: var(--font-route);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mute-on-dark);
+      margin-bottom: 0.35rem;
+    }
+    .lot h3 {
+      margin: 0 0 0.3rem;
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .lot__meta {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--mute-on-dark);
+    }
+    .lots-hint {
+      margin: 0.35rem 0 0;
+      font-family: var(--font-route);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mute-on-dark);
+    }
+
+    /* —— Brief: carbon-copy form —— */
+    .brief {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 0;
+      background: var(--paper-2);
+      color: var(--ink);
+      border: 1px solid rgba(26, 24, 20, 0.2);
+      position: relative;
+      box-shadow:
+        3px 3px 0 rgba(26, 24, 20, 0.06),
+        6px 6px 0 rgba(26, 24, 20, 0.04);
+    }
+    .brief::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 12px;
+      background:
+        radial-gradient(circle at 0 8px, transparent 5px, var(--asphalt) 5.5px) 0 0 / 12px 16px;
+      transform: translateX(-6px);
+      pointer-events: none;
+    }
+    .brief__form,
+    .brief__copy {
+      padding: clamp(1.25rem, 3vw, 1.85rem);
+      min-width: 0;
+    }
+    .brief__form {
+      border-right: 1px dashed rgba(26, 24, 20, 0.22);
+      background:
+        repeating-linear-gradient(
+          transparent,
+          transparent 27px,
+          rgba(26, 24, 20, 0.045) 27px,
+          rgba(26, 24, 20, 0.045) 28px
+        );
+    }
+    .brief__stamp {
+      position: absolute;
+      right: 1.25rem;
+      top: 1.1rem;
+      width: 5.5rem;
+      height: 5.5rem;
+      border: 2px solid rgba(143, 63, 36, 0.55);
+      border-radius: 50%;
+      color: rgba(143, 63, 36, 0.7);
+      font-family: var(--font-route);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      line-height: 1.2;
+      transform: rotate(12deg);
+      pointer-events: none;
+      opacity: 0.85;
+    }
+    .brief__title {
+      margin: 0 0 1.15rem;
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+    }
+    .field { margin-bottom: 1.05rem; }
+    .field label {
+      display: block;
+      font-family: var(--font-route);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mute);
+      margin-bottom: 0.45rem;
     }
     .choice-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
-    .choice {
-      position: relative;
-      cursor: pointer;
-    }
+    .choice { position: relative; cursor: pointer; }
     .choice input {
       position: absolute;
       opacity: 0;
@@ -398,36 +750,56 @@
       align-items: center;
       justify-content: center;
       min-height: 44px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      padding: 0.5rem;
+      border: 1px solid rgba(26, 24, 20, 0.22);
+      background: rgba(240, 233, 220, 0.65);
+      padding: 0.45rem;
       font-size: 0.9rem;
-      transition: border-color 0.2s, background 0.2s, color 0.2s;
+      transition: border-color 0.15s, background 0.15s;
     }
     .choice input:checked + span {
-      border-color: var(--signal);
-      background: rgba(196, 92, 38, 0.12);
+      border-color: var(--ink);
+      background: var(--ink);
       color: var(--paper);
     }
     .choice input:focus-visible + span { box-shadow: var(--focus); }
     .select, .input, .textarea {
       width: 100%;
       min-height: 46px;
-      background: var(--asphalt);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      color: var(--paper);
-      padding: 0.65rem 0.85rem;
+      background: rgba(240, 233, 220, 0.8);
+      border: 0;
+      border-bottom: 1.5px solid rgba(26, 24, 20, 0.35);
+      border-radius: 0;
+      color: var(--ink);
+      padding: 0.55rem 0.15rem;
       font: inherit;
     }
-    .textarea { min-height: 110px; resize: vertical; }
-    .select:focus, .input:focus, .textarea:focus { border-color: var(--signal); }
+    .textarea {
+      min-height: 110px;
+      resize: vertical;
+      border: 1px solid rgba(26, 24, 20, 0.22);
+      padding: 0.65rem 0.75rem;
+      background: rgba(240, 233, 220, 0.9);
+    }
+    .select:focus, .input:focus, .textarea:focus {
+      outline: none;
+      border-color: var(--seal);
+    }
+    .brief__copy h3 {
+      margin: 0 0 0.5rem;
+      font-family: var(--font-route);
+      font-size: 0.85rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mute);
+      font-weight: 600;
+    }
     .calc-estimate {
-      font-family: Syne, system-ui, sans-serif;
-      font-size: clamp(1.2rem, 2.6vw, 1.55rem);
-      font-weight: 700;
-      color: var(--signal);
-      margin: 0.5rem 0 0.85rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 1.85rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink);
+      margin: 0 0 1rem;
       letter-spacing: -0.02em;
     }
     .calc-summary {
@@ -435,197 +807,186 @@
       margin: 0 0 1rem;
       padding: 0;
       display: grid;
-      gap: 0.45rem;
+      gap: 0.4rem;
     }
     .calc-summary li {
       display: flex;
       justify-content: space-between;
       gap: 1rem;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--mute);
-      padding-bottom: 0.45rem;
-      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid rgba(26, 24, 20, 0.12);
+      font-variant-numeric: tabular-nums;
     }
     .calc-summary span:last-child {
-      color: var(--paper);
+      color: var(--ink);
       text-align: right;
+      font-weight: 500;
     }
     .calc-list {
       list-style: none;
       margin: 0 0 1rem;
-      padding: 0;
-      border-top: 1px solid var(--line);
+      padding: 0.75rem 0 0;
+      border-top: 1px solid rgba(26, 24, 20, 0.18);
     }
     .calc-list li {
       display: flex;
       gap: 0.75rem;
-      padding: 0.7rem 0;
-      border-bottom: 1px solid var(--line);
+      padding: 0.55rem 0;
+      border-bottom: 1px dashed rgba(26, 24, 20, 0.14);
       font-size: 0.95rem;
     }
     .calc-list strong {
-      font-family: ui-monospace, monospace;
+      font-family: var(--font-route);
       color: var(--mute);
-      font-weight: 500;
+      font-weight: 600;
+      letter-spacing: 0.06em;
       min-width: 1.75rem;
     }
-    .calc-hint { color: var(--mute); font-size: 0.85rem; margin: 0 0 1.25rem; }
+    .calc-hint {
+      color: var(--mute);
+      font-size: 0.86rem;
+      margin: 0 0 1.15rem;
+      line-height: 1.5;
+    }
+    .brief__actions {
+      display: grid;
+      gap: 0.55rem;
+    }
+    .brief .btn--ghost {
+      border-color: rgba(26, 24, 20, 0.25);
+      color: var(--ink) !important;
+    }
+    .brief .btn--ghost:hover {
+      border-color: rgba(26, 24, 20, 0.5);
+      color: var(--ink) !important;
+    }
     @media (max-width: 900px) {
-      .calc-shell { grid-template-columns: 1fr; }
+      .brief { grid-template-columns: 1fr; }
+      .brief__form { border-right: 0; border-bottom: 1px dashed rgba(26, 24, 20, 0.22); }
+      .brief__stamp { width: 4.5rem; height: 4.5rem; font-size: 0.58rem; right: 0.85rem; top: 0.75rem; }
       .choice-grid { grid-template-columns: 1fr; }
     }
 
-    .cases-editorial {
+    /* —— Reviews: pull quotes —— */
+    .quotes {
       display: grid;
-      grid-template-columns: 1.35fr 1fr 1fr;
-      grid-auto-rows: minmax(180px, auto);
-      gap: 0.85rem;
+      gap: clamp(2.5rem, 6vw, 4rem);
+      max-width: 52rem;
     }
-    .case {
+    .quote {
       position: relative;
-      overflow: hidden;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
-      --mx: 50%;
-      --my: 40%;
+      padding-left: 0;
     }
-    .case:nth-child(1) { grid-row: span 2; }
-    .case:nth-child(4) { grid-column: 2 / 4; }
-    .case:nth-child(5) { grid-column: 1 / 3; }
-    .case__media {
-      position: relative;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-    }
-    .case:nth-child(1) .case__media { aspect-ratio: 3 / 4; min-height: 100%; }
-    .case:nth-child(4) .case__media,
-    .case:nth-child(5) .case__media { aspect-ratio: 16 / 9; }
-    .case img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s ease;
-    }
-    .case:hover img { transform: scale(1.04); }
-    .case__body {
-      padding: 0.9rem 1rem 1.1rem;
-      position: relative;
-    }
-    .case__body::before {
-      content: "";
+    .quote::before {
+      content: "«";
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 10vw, 6.5rem);
+      line-height: 0.7;
+      color: rgba(240, 233, 220, 0.16);
       position: absolute;
-      inset: 0;
-      background: radial-gradient(280px circle at var(--mx) var(--my), rgba(196,92,38,0.12), transparent 50%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      left: -0.15em;
+      top: -0.15em;
       pointer-events: none;
     }
-    .case:hover .case__body::before { opacity: 1; }
-    .case__route {
-      font-family: ui-monospace, monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      color: var(--signal);
-      margin-bottom: 0.35rem;
-    }
-    .case h3 {
-      margin: 0 0 0.35rem;
-      font-family: Syne, system-ui, sans-serif;
-      font-size: 1.05rem;
-    }
-    .case__price { font-size: 0.9rem; color: var(--paper); }
-    .case__note { margin: 0.35rem 0 0; font-size: 0.82rem; color: var(--mute); }
-    .filmstrip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.75rem;
-      margin-top: clamp(1.75rem, 4vw, 2.75rem);
-    }
-    .filmstrip figure {
+    .quote blockquote {
       margin: 0;
-      min-width: 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 3.4vw, 2.15rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.28;
+      letter-spacing: -0.02em;
+      max-width: 28ch;
     }
-    .filmstrip picture,
-    .filmstrip img {
+    .quote footer {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      align-items: baseline;
+      font-size: 0.9rem;
+      color: var(--mute-on-dark);
+    }
+    .quote footer strong {
+      font-family: var(--font-route);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--paper);
+      font-size: 0.8rem;
+    }
+    .quote a {
+      color: var(--mute-on-dark);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .quote a:hover { color: var(--paper); }
+
+    /* —— Office split —— */
+    .office {
+      display: grid;
+      grid-template-columns: 1.2fr 0.95fr;
+      min-height: min(56vh, 500px);
+      border: 1px solid var(--line-dark);
+      overflow: hidden;
+    }
+    .office__media {
+      min-height: 260px;
+      background: #0a0908;
+    }
+    .office__media picture,
+    .office__media img {
       display: block;
       width: 100%;
-      aspect-ratio: 4 / 3;
+      height: 100%;
+      min-height: 260px;
       object-fit: cover;
-      border-radius: var(--radius-sm);
+      object-position: center 42%;
     }
-    .filmstrip figcaption {
-      margin-top: 0.45rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--mute);
+    .office__copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.35rem;
+      padding: clamp(1.35rem, 3vw, 2.2rem);
+      background: var(--carbon);
     }
-    @media (max-width: 900px) {
-      .cases-editorial { grid-template-columns: 1fr 1fr; }
-      .case:nth-child(1),
-      .case:nth-child(4),
-      .case:nth-child(5) { grid-column: auto; grid-row: auto; }
-      .case:nth-child(1) .case__media { aspect-ratio: 4 / 3; min-height: 0; }
-      .filmstrip { grid-template-columns: 1fr 1fr; }
+    .office__meta {
+      display: grid;
+      gap: 0.5rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--line-dark);
+      color: var(--mute-on-dark);
+      font-size: 0.92rem;
     }
-    @media (max-width: 560px) {
-      .cases-editorial { grid-template-columns: 1fr; }
-      .filmstrip { gap: 0.5rem; }
+    .office__meta strong { color: var(--paper); font-weight: 600; }
+    .office__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+    @media (max-width: 860px) {
+      .office { grid-template-columns: 1fr; }
+      .office__media { max-height: 300px; }
+      .office__media img { max-height: 300px; }
+      .office__actions { flex-direction: column; align-items: stretch; }
+      .office__actions .btn { width: 100%; }
     }
 
-    .reviews-stack {
-      display: grid;
-      gap: 0;
-      max-width: 54rem;
-    }
-    .review {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 9.5rem);
-      column-gap: 1.25rem;
-      row-gap: 0.65rem;
-      padding: 1.35rem 0;
-      border-top: 1px solid var(--line);
-      align-items: start;
-    }
-    .review:last-child { border-bottom: 1px solid var(--line); }
-    .review blockquote {
-      margin: 0;
-      font-size: clamp(1.05rem, 2.2vw, 1.2rem);
-      line-height: 1.45;
-      font-weight: 400;
-    }
-    .review footer {
-      font-size: 0.85rem;
-      color: var(--mute);
-      padding-top: 0.15rem;
-    }
-    .review footer strong {
-      display: block;
-      color: var(--paper);
-      margin-bottom: 0.25rem;
-      font-family: Syne, system-ui, sans-serif;
-    }
-    .review a { color: var(--mute); text-decoration: underline; text-underline-offset: 3px; }
-    @media (max-width: 700px) {
-      .review {
-        grid-template-columns: 1fr;
-        gap: 0.65rem;
-      }
-    }
-
+    /* —— FAQ —— */
     .faq details {
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--line-paper);
       padding: 0.85rem 0;
     }
-    .faq details:last-child { border-bottom: 1px solid var(--line); }
+    .faq details:last-child { border-bottom: 1px solid var(--line-paper); }
     .faq summary {
       cursor: pointer;
       list-style: none;
-      font-family: Syne, system-ui, sans-serif;
-      font-size: 1.05rem;
-      padding: 0.35rem 0;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      padding: 0.3rem 0;
       display: flex;
       justify-content: space-between;
       gap: 1rem;
@@ -633,140 +994,128 @@
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::after {
       content: "+";
-      color: var(--signal);
-      font-family: ui-monospace, monospace;
+      font-family: var(--font-route);
+      color: var(--seal);
+      font-size: 1.1rem;
     }
     .faq details[open] summary::after { content: "–"; }
     .faq details p {
-      margin: 0.35rem 0 0.5rem;
+      margin: 0.4rem 0 0.5rem;
       color: var(--mute);
       max-width: 40rem;
     }
 
+    /* —— Contacts —— */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
+      gap: 1.25rem;
     }
-    .contact-panel, .form {
-      background: var(--panel);
-      padding: clamp(1.25rem, 3vw, 2rem);
+    .contact-card,
+    .form {
+      background: var(--carbon);
+      border: 1px solid var(--line-dark);
+      padding: clamp(1.25rem, 3vw, 1.85rem);
+      min-width: 0;
     }
     .contact-row {
       display: grid;
       gap: 0.25rem;
       padding: 0.85rem 0;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--line-dark);
     }
     .contact-row span {
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
+      font-family: var(--font-route);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--mute);
+      color: var(--mute-on-dark);
     }
-    .contact-row a { text-decoration: underline; text-underline-offset: 3px; }
+    .contact-row a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
     .map-embed {
-      margin-top: 1.25rem;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
+      margin-top: 1.15rem;
+      border: 1px solid var(--line-dark);
       overflow: hidden;
       aspect-ratio: 16 / 11;
-      background: #0a0c0e;
+      background: #0a0908;
     }
     .map-embed iframe {
       width: 100%;
       height: 100%;
       border: 0;
-      filter: grayscale(0.35) contrast(1.05);
+      filter: grayscale(0.45) contrast(1.05);
     }
     .form h3 {
-      margin: 0 0 0.5rem;
-      font-family: Syne, system-ui, sans-serif;
-      font-size: 1.35rem;
+      margin: 0 0 0.45rem;
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 400;
     }
+    .form .field label { color: var(--mute-on-dark); }
+    .form .select,
+    .form .input,
+    .form .textarea {
+      background: var(--asphalt);
+      color: var(--paper);
+      border-bottom-color: var(--line-dark);
+    }
+    .form .textarea { border: 1px solid var(--line-dark); }
     .form__row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0.75rem;
     }
     .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
-    .form__status { min-height: 1.4rem; font-size: 0.9rem; margin: 0.75rem 0 0; color: var(--mute); }
-    .form__status[data-state="ok"] { color: #3ecf6a; }
+    .form__status {
+      min-height: 1.4rem;
+      font-size: 0.9rem;
+      margin: 0.75rem 0 0;
+      color: var(--mute-on-dark);
+    }
+    .form__status[data-state="ok"] { color: #7dba8a; }
     .form__status[data-state="error"] { color: #e07070; }
     @media (max-width: 860px) {
-      .contact-grid, .form__row { grid-template-columns: 1fr; }
+      .contact-grid,
+      .form__row { grid-template-columns: 1fr; }
     }
 
-    .office-strip {
-      display: grid;
-      grid-template-columns: 1.2fr 0.9fr;
-      gap: 0;
-      align-items: stretch;
-      min-height: min(58vh, 520px);
-      border: 1px solid var(--line);
-      overflow: hidden;
-    }
-    .office-media {
-      min-height: 280px;
-      background: #0a0c0e;
-    }
-    .office-media picture {
-      display: block;
-      width: 100%;
-      height: 100%;
-      min-height: inherit;
-    }
-    .office-media img {
-      width: 100%;
-      height: 100%;
-      min-height: 280px;
-      object-fit: cover;
-      object-position: center 42%;
-      display: block;
-    }
-    .office-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 1.5rem;
-      padding: clamp(1.4rem, 3.2vw, 2.4rem);
-      background:
-        linear-gradient(160deg, rgba(196,92,38,0.1), transparent 42%),
-        var(--panel);
-    }
-    .office-copy__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-      margin-top: auto;
-    }
-    .office-meta {
-      display: grid;
-      gap: 0.55rem;
-      padding-top: 0.35rem;
-      border-top: 1px solid var(--line);
-      color: var(--mute);
-      font-size: 0.92rem;
-    }
-    .office-meta strong { color: var(--paper); font-weight: 600; }
-    @media (max-width: 860px) {
-      .office-strip {
-        grid-template-columns: 1fr;
-        min-height: 0;
-      }
-      .office-media { min-height: 240px; max-height: 320px; }
-      .office-media img { min-height: 240px; max-height: 320px; }
-    }
-
+    /* —— Footer —— */
     .site-footer {
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--line-dark);
       padding: 2rem 0 6.5rem;
-      color: var(--mute);
+      color: var(--mute-on-dark);
       font-size: 0.9rem;
     }
-    .site-footer a { text-decoration: underline; text-underline-offset: 3px; }
+    .site-footer__inner {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+    .site-footer__brand {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--paper);
+      line-height: 1;
+    }
+    .site-footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1.15rem;
+    }
+    .site-footer a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    @media (min-width: 760px) {
+      .site-footer__inner {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: end;
+      }
+    }
 
     .mobile-wa {
       position: fixed;
@@ -776,215 +1125,42 @@
       z-index: 70;
       display: none;
       padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom, 0px));
-      background: rgba(14, 17, 20, 0.92);
-      backdrop-filter: blur(12px);
-      border-top: 1px solid var(--line);
+      background: rgba(18, 17, 16, 0.96);
+      border-top: 1px solid var(--line-dark);
     }
-    .mobile-wa .btn { width: 100%; border-radius: var(--radius-md); min-height: 48px; }
+    .mobile-wa .btn { width: 100%; }
     @media (max-width: 768px) {
       .mobile-wa { display: block; }
       body { padding-bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px)); }
-    }
-
-    .nav-desktop a {
-      font-size: 0.9rem;
-      color: var(--mute);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-desktop a:hover { color: var(--paper); }
-
-    .mobile-nav {
-      display: none;
-      border-top: 1px solid var(--line);
-      background: var(--asphalt);
-      padding: 0.75rem 1rem 1rem;
-    }
-    .mobile-nav.is-open { display: grid; gap: 0.35rem; }
-    .mobile-nav a {
-      padding: 0.7rem 0.25rem;
-      text-decoration: none;
-      border-bottom: 1px solid var(--line);
-      color: var(--paper);
-    }
-
-    .reveal { opacity: 0; transform: translateY(28px); }
-    .reveal.is-in { opacity: 1; transform: none; transition: opacity 0.7s ease, transform 0.7s ease; }
-    @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; }
-    }
-
-    .shell {
-      width: min(1200px, calc(100% - 2.5rem));
-      margin-inline: auto;
-    }
-    .shell--wide {
-      width: min(1480px, calc(100% - 1.5rem));
-      margin-inline: auto;
-    }
-
-    /* —— Mobile layout (phones ≤768px) —— */
-    @media (max-width: 768px) {
-      .shell {
-        width: min(1200px, calc(100% - 2.25rem));
-      }
-      .shell--wide {
-        width: min(1480px, calc(100% - 1.5rem));
-      }
-
-      .hero {
-        min-height: 100svh;
-        min-height: 100dvh;
-        align-items: end;
-        padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
-      }
-      .hero__media img {
-        object-position: 48% 28%;
-      }
-      .hero__veil {
-        background:
-          linear-gradient(180deg, rgba(14,17,20,0.48) 0%, rgba(14,17,20,0.68) 40%, rgba(14,17,20,0.98) 100%),
-          linear-gradient(90deg, rgba(14,17,20,0.82) 0%, rgba(14,17,20,0.45) 70%, rgba(14,17,20,0.55) 100%);
-      }
-      .hero__content {
-        padding-top: 4.75rem;
-        padding-bottom: 1.35rem;
-      }
-      .hero__brand {
-        font-size: clamp(1.9rem, 9.5vw, 2.35rem);
-        margin: 0 0 0.75rem;
-        line-height: 0.95;
-      }
-      .hero__title {
-        font-size: 1.08rem;
-        line-height: 1.45;
-        max-width: 100%;
-      }
-      .hero__lede-full { display: none; }
-      .hero__lede-short { display: inline; }
-      .hero .lede,
-      .hero__lede {
-        margin-top: 0.9rem;
-        font-size: 0.92rem;
-        line-height: 1.55;
-        max-width: 100%;
-      }
-      .hero__cta {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-items: stretch;
-        gap: 0.75rem;
-        margin-top: 1.5rem;
-        margin-bottom: 0.25rem;
-        width: 100%;
-        max-width: 100%;
-      }
-      .hero__cta .btn {
-        width: 100%;
-        max-width: 100%;
-        flex: none;
-        min-height: 48px;
-        white-space: normal;
-        text-align: center;
-        padding: 0.85rem 1rem;
-        box-sizing: border-box;
-      }
-      .hero__cta .btn--ghost {
-        display: inline-flex;
-        background: rgba(14, 17, 20, 0.88);
-        border-color: rgba(232, 228, 220, 0.5);
-        color: var(--paper) !important;
-      }
-
-      .trust-rail > * { padding: 1.1rem 1.05rem; }
-      .trust-rail strong { font-size: 1.3rem; overflow-wrap: anywhere; }
-
-      .section { padding: 3.25rem 0; }
-
-      .services-board,
-      .calc-shell,
-      .cases-editorial,
-      .contact-grid,
-      .office-strip,
-      .service-cell,
-      .calc-panel,
-      .calc-result,
-      .contact-panel,
-      .form,
-      .case {
-        min-width: 0;
-      }
-
-      .cases-editorial {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-      }
-      .case:nth-child(1),
-      .case:nth-child(4),
-      .case:nth-child(5) {
-        grid-column: auto;
-        grid-row: auto;
-      }
-
-      .choice-grid { grid-template-columns: 1fr; }
-      .choice span {
-        min-height: 48px;
-        padding: 0.65rem 0.75rem;
-        text-align: center;
-      }
-      .select, .input, .textarea {
-        max-width: 100%;
-        min-width: 0;
-      }
-
-      .review { grid-template-columns: 1fr; }
-      .review footer { order: 2; }
-
-      .office-copy__actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .office-copy__actions .btn { width: 100%; }
-
-      .form__row { grid-template-columns: 1fr; }
-
-      .faq summary {
-        font-size: 1rem;
-        gap: 0.75rem;
-        overflow-wrap: anywhere;
-      }
-
       .site-footer {
         padding: 2rem 0 calc(6.75rem + env(safe-area-inset-bottom, 0px));
       }
+      .shell { width: min(1120px, calc(100% - 2.25rem)); }
+      .shell--wide { width: min(1360px, calc(100% - 1.25rem)); }
+      .hero__issue,
+      .hero__stage,
+      .hero__bottom { width: min(1120px, calc(100% - 2.25rem)); }
     }
 
     @media (max-width: 480px) {
-      .hero__brand {
-        font-size: clamp(1.85rem, 10vw, 2.2rem);
-      }
-      .path-step { padding-left: 1rem; }
       .calc-summary li {
         flex-wrap: wrap;
         gap: 0.25rem 0.75rem;
       }
+      .faq summary {
+        font-size: 1.08rem;
+        overflow-wrap: anywhere;
+      }
     }
 
-    img, picture, iframe, video, svg { max-width: 100%; }
-    .hero__media img {
-      max-width: none;
-      width: 100%;
-      height: 100%;
-    }
-    .calc-shell > *,
-    .form > *,
-    .services-board > *,
-    .cases-editorial > *,
-    .contact-grid > *,
-    .office-strip > * {
-      min-width: 0;
-    }
+    .btn:hover,
+    .btn--ink:hover { color: #fff !important; }
+    .btn--ghost:hover { color: var(--paper) !important; }
+    .brief .btn--ghost:hover { color: var(--ink) !important; }
+    .paper-band a:hover { color: var(--seal); }
+    .masthead__mark:hover,
+    .nav-desktop a:hover,
+    .mobile-nav a:hover { color: var(--paper); }
   </style>
 
   <script type="application/ld+json">
@@ -1000,6 +1176,7 @@
       "@type": "PostalAddress",
       "streetAddress": "ул. Дзержинского, 32 стр. 1, офис 323, ТЦ «Пассаж»",
       "addressLocality": "Иркутск",
+      "addressRegion": "Иркутская область",
       "addressCountry": "RU"
     },
     "geo": {
@@ -1029,53 +1206,34 @@
   </script>
 </head>
 <body>
-  <div class="grain" aria-hidden="true"></div>
+  <a href="#main" class="sr-only">К содержанию</a>
 
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-signal focus:text-white focus:px-3 focus:py-2">
-    К содержанию
-  </a>
-
-  <header class="site-header">
-    <div class="shell flex items-center justify-between gap-4 py-3">
-      <a href="#top" class="font-display font-bold text-lg tracking-tight no-underline hover:text-paper" aria-label="Путь Авто — наверх">
-        Путь Авто
-      </a>
-
-      <nav class="nav-desktop hidden md:flex items-center gap-6" aria-label="Основная навигация">
-        <a href="#path">Путь</a>
-        <a href="#services">Услуги</a>
-        <a href="#calc">Бриф</a>
-        <a href="#cases">Выдачи</a>
+  <header class="masthead">
+    <div class="shell masthead__inner">
+      <a href="#top" class="masthead__mark" aria-label="Путь Авто — наверх">Путь Авто</a>
+      <span class="masthead__meta" aria-hidden="true">Иркутск · JP / KR / CN</span>
+      <nav class="nav-desktop" aria-label="Основная навигация">
+        <a href="#route">Маршрут</a>
+        <a href="#lots">Выдачи</a>
+        <a href="#brief">Бриф</a>
         <a href="#reviews">Отзывы</a>
         <a href="#contacts">Контакты</a>
       </nav>
-
-      <div class="flex items-center gap-3">
-        <div class="hidden sm:flex items-center gap-2 text-xs text-mute" aria-live="polite">
-          <span class="pulse-dot" aria-hidden="true"></span>
-          <span>принимаем заявки</span>
-        </div>
-        <a class="btn hidden sm:inline-flex text-sm !min-h-[40px] !py-2" href="https://wa.me/79501444418?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%20%D0%B0%D0%B2%D1%82%D0%BE%20%D0%BF%D0%BE%D0%B4%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7." rel="noopener noreferrer" target="_blank">WhatsApp</a>
-        <button
-          type="button"
-          class="md:hidden border border-line px-3 py-2 text-sm shrink-0"
-          data-menu-toggle
-          aria-expanded="false"
-          aria-controls="mobile-nav"
-        >
-          Меню
-        </button>
+      <div class="masthead__actions">
+        <a class="masthead__wa" href="https://wa.me/79501444418?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%20%D0%B0%D0%B2%D1%82%D0%BE%20%D0%BF%D0%BE%D0%B4%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7." rel="noopener noreferrer" target="_blank">WhatsApp</a>
+        <button type="button" class="menu-btn" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav">Меню</button>
       </div>
     </div>
-    <nav id="mobile-nav" class="mobile-nav md:hidden" data-mobile-nav aria-label="Мобильная навигация">
-      <a href="#path">Путь</a>
-      <a href="#services">Услуги</a>
-      <a href="#calc">Бриф</a>
-      <a href="#cases">Выдачи</a>
-      <a href="#reviews">Отзывы</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
+    <div class="shell">
+      <nav id="mobile-nav" class="mobile-nav" data-mobile-nav aria-label="Мобильная навигация">
+        <a href="#route">Маршрут</a>
+        <a href="#lots">Выдачи</a>
+        <a href="#brief">Бриф</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
   </header>
 
   <main id="main">
@@ -1084,141 +1242,262 @@
         <picture>
           <source srcset="images/hero-wide.webp" type="image/webp" media="(min-width: 768px)" />
           <source srcset="images/hero-01.webp" type="image/webp" />
-          <img src="images/hero-01.jpg" alt="Toyota Corolla Cross на выдаче в Путь Авто, Иркутск" width="960" height="1280" fetchpriority="high" decoding="async" />
+          <img src="images/hero-01.jpg" alt="" width="960" height="1280" fetchpriority="high" decoding="async" />
         </picture>
       </div>
       <div class="hero__veil" aria-hidden="true"></div>
 
-      <div class="shell hero__content">
-        <div class="sm:hidden flex items-center gap-2 text-xs text-mute mb-5">
-          <span class="pulse-dot" aria-hidden="true"></span>
-          <span>принимаем заявки · Иркутск</span>
-        </div>
-        <p class="hero__brand" data-hero-brand>Путь <span>Авто</span></p>
-        <h1 id="hero-title" class="hero__title font-display font-semibold m-0" data-hero-title>
-          Авто из Японии, Кореи и Китая — смета под ключ до ставки
-        </h1>
-        <p class="lede hero__lede" data-hero-lede>
-          <span class="hero__lede-full">Подбор лота, аукцион, таможня и доставка. Вы получаете понятный маршрут и машину без пробега по РФ — с выдачей в Иркутске.</span>
-          <span class="hero__lede-short">Подбор, аукцион, таможня и доставка — понятный маршрут до выдачи в Иркутске.</span>
+      <div class="hero__issue">
+        <span>Журнал импорта · Иркутск</span>
+        <span class="tabular">№ 038 · ежедневно 09:00–21:00</span>
+      </div>
+
+      <div class="hero__stage">
+        <p class="hero__brand" data-hero-brand>Путь <em>Авто</em></p>
+        <h1 id="hero-title">Авто из Японии, Кореи и Китая — смета под ключ до ставки</h1>
+      </div>
+
+      <div class="hero__bottom">
+        <p class="hero__lede" data-hero-lede>
+          <span class="hero__lede-full">Подбор лота, ставка на аукционе, таможня и доставка. Понятный маршрут и машина без пробега по РФ — выдача в Иркутске, ТЦ «Пассаж».</span>
+          <span class="hero__lede-short">Подбор, аукцион, таможня и доставка — до выдачи в Иркутске.</span>
         </p>
         <div class="hero__cta" data-hero-cta>
-          <a class="btn" href="#calc">Собрать бриф</a>
-          <a class="btn btn--ghost" href="https://wa.me/79501444418?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%20%D0%B0%D0%B2%D1%82%D0%BE%20%D0%BF%D0%BE%D0%B4%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7." rel="noopener noreferrer" target="_blank">Написать в WhatsApp</a>
+          <a class="btn" href="#brief">Собрать бриф</a>
+          <a class="btn btn--ghost" href="https://wa.me/79501444418?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%20%D0%B0%D0%B2%D1%82%D0%BE%20%D0%BF%D0%BE%D0%B4%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7." rel="noopener noreferrer" target="_blank">WhatsApp</a>
         </div>
       </div>
     </section>
 
-    <section class="trust-rail" aria-label="Ключевые факты">
-      <div><strong>400+</strong><span>автомобилей из JP / KR / CN</span></div>
-      <div><strong>5,0</strong><span>Яндекс.Карты · 50+ оценок</span></div>
-      <div><strong>150–500 тыс. ₽</strong><span>ориентир экономии vs вторичка РФ</span></div>
-      <div><strong>09:00–21:00</strong><span>ежедневно · Иркутск</span></div>
+    <section class="facts" aria-label="Ключевые факты">
+      <div>
+        <span class="facts__label">Парк выдач</span>
+        <strong class="tabular">400+</strong>
+      </div>
+      <div>
+        <span class="facts__label">Яндекс.Карты</span>
+        <strong class="tabular">5,0 · 50+</strong>
+      </div>
+      <div>
+        <span class="facts__label">Ориентир экономии</span>
+        <strong class="tabular">150–500 тыс.</strong>
+      </div>
+      <div>
+        <span class="facts__label">Офис</span>
+        <strong>Иркутск</strong>
+      </div>
     </section>
 
-    <section class="section" id="path" aria-labelledby="path-title">
+    <section class="paper-band block" id="route" aria-labelledby="route-title">
       <div class="shell">
-        <div class="reveal mb-10 max-w-2xl">
-          <p class="eyebrow">Маршрутный лист</p>
-          <h2 id="path-title" class="font-display text-3xl md:text-4xl font-bold m-0">Как устроен путь авто</h2>
-          <p class="lede">Шесть контрольных точек — от заявки до ключей. Порядок важен: вы всегда видите, на каком этапе машина.</p>
+        <div class="sec-head">
+          <div>
+            <p class="kicker">Маршрутный бланк</p>
+            <h2 id="route-title" class="headline">Шесть точек от заявки до ключей</h2>
+          </div>
+          <p class="lede">Не пять одинаковых карточек услуг — один непрерывный маршрут. На каждом этапе видно, где машина и что уже согласовано. Фикс услуг — в договоре.</p>
         </div>
 
-        <div class="path-track reveal">
-          <article class="path-step">
-            <div class="path-step__code">01 · BRIEF</div>
+        <div class="spine" data-spine>
+          <div class="spine__line" aria-hidden="true"><span data-spine-fill></span></div>
+
+          <article class="spine-item">
+            <div class="spine-item__code">01 · Бриф</div>
             <div>
-              <h3>Бриф и бюджет</h3>
+              <h3>Бюджет и задача</h3>
               <p>Фиксируем модель, комплектацию, страну и потолок цены. Без «продадим что угодно».</p>
             </div>
           </article>
-          <article class="path-step">
-            <div class="path-step__code">02 · LOT</div>
+          <article class="spine-item">
+            <div class="spine-item__code">02 · Лот</div>
             <div>
               <h3>Подбор лота</h3>
               <p>Смотрим аукционные листы, историю и реальные фото. Объясняем риски до ставки.</p>
             </div>
           </article>
-          <article class="path-step">
-            <div class="path-step__code">03 · BID</div>
+          <article class="spine-item">
+            <div class="spine-item__code">03 · Ставка</div>
             <div>
-              <h3>Ставка на аукционе</h3>
-              <p>Торгуемся в рамках согласованного лимита. Вы в курсе каждого шага.</p>
+              <h3>Аукцион и выкуп</h3>
+              <p>Торгуемся в рамках согласованного лимита. Работаем с площадками Японии, Кореи и Китая.</p>
             </div>
           </article>
-          <article class="path-step">
-            <div class="path-step__code">04 · ROUTE</div>
+          <article class="spine-item">
+            <div class="spine-item__code">04 · Таможня</div>
             <div>
-              <h3>Таможня и логистика</h3>
-              <p>Смета под ключ заранее: доставка, пошлины, оформление. Без скрытых доплат после договора.</p>
+              <h3>Логистика и оформление</h3>
+              <p>Смета под ключ заранее: доставка, пошлины, документы. Без скрытых доплат после договора.</p>
             </div>
           </article>
-          <article class="path-step">
-            <div class="path-step__code">05 · DETAIL</div>
+          <article class="spine-item">
+            <div class="spine-item__code">05 · Подготовка</div>
             <div>
-              <h3>Подготовка к выдаче</h3>
-              <p>При необходимости — детейлинг и финальная проверка перед передачей ключей.</p>
+              <h3>Детейлинг перед выдачей</h3>
+              <p>Машина приходит чистой и готовой к осмотру — это часто отмечают в отзывах на Яндекс.Картах.</p>
             </div>
           </article>
-          <article class="path-step">
-            <div class="path-step__code">06 · KEYS</div>
+          <article class="spine-item">
+            <div class="spine-item__code">06 · Ключи</div>
             <div>
               <h3>Выдача в Иркутске</h3>
-              <p>Получаете автомобиль, документы и понятный итог сделки. Доставка в регионы — по согласованию.</p>
+              <p>Документы, осмотр и передача ключей. Доставка в регионы РФ — по согласованию при брифе.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section pt-0" id="services" aria-labelledby="services-title">
+    <section class="asphalt-band block" id="lots" aria-labelledby="lots-title">
       <div class="shell">
-        <div class="reveal mb-10 max-w-2xl">
-          <p class="eyebrow">Услуги</p>
-          <h2 id="services-title" class="font-display text-3xl md:text-4xl font-bold m-0">Единое окно: от аукциона до ключей</h2>
-          <p class="lede">Закрываем весь цикл импорта — чтобы вы не собирали цепочку из пяти подрядчиков. Стоимость услуг — фикс в договоре.</p>
+        <div class="sec-head">
+          <div>
+            <p class="kicker">Аукционный лист · выдачи</p>
+            <h2 id="lots-title" class="headline headline--wide">Реальные машины, не сток</h2>
+          </div>
+          <p class="lede">Фото с Яндекс.Карт «Путь Авто» и витрины VK Market (Honda Fit, Tank 300, Kia Stonic). Цены лотов — индивидуально под курс и маршрут. Листайте в сторону.</p>
         </div>
+      </div>
 
-        <div class="services-board reveal">
-          <article class="service-cell service-cell--select" data-spotlight>
-            <div class="mono-tag">01 / SELECT</div>
-            <h3>Подбор под задачу</h3>
-            <p>Семейный хэтчбек, гибрид, кроссовер или премиум — ищем конкретную комплектацию, а не «что попалось».</p>
+      <div class="shell lots-wrap">
+        <div class="lots" data-lots tabindex="0" aria-label="Галерея выдач — горизонтальная прокрутка">
+          <article class="lot">
+            <div class="lot__sheet"><b>LOT · 01</b><span>JP → IRK</span></div>
+            <div class="lot__media">
+              <picture>
+                <source srcset="images/case-01.webp" type="image/webp" />
+                <img src="images/case-01.jpg" alt="Honda Freed после выдачи — Путь Авто, Иркутск" width="1280" height="960" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <div class="lot__body">
+              <div class="lot__route">Япония → Иркутск</div>
+              <h3>Honda Freed</h3>
+              <p class="lot__meta">Семейный минивэн · фото с Яндекс.Карт</p>
+            </div>
           </article>
-          <article class="service-cell service-cell--bid" data-spotlight>
-            <div class="mono-tag">02 / BID</div>
-            <h3>Ставка и выкуп лота</h3>
-            <p>Работаем с аукционами Японии, Кореи и Китая. Лимит ставки согласуем заранее.</p>
+
+          <article class="lot">
+            <div class="lot__sheet"><b>LOT · 02</b><span>VK</span></div>
+            <div class="lot__media">
+              <picture>
+                <source srcset="images/delivery-01.webp" type="image/webp" />
+                <img src="images/delivery-01.jpg" alt="Honda Fit в наличии — витрина VK Путь Авто" width="1280" height="960" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <div class="lot__body">
+              <div class="lot__route">VK Market</div>
+              <h3>Honda Fit</h3>
+              <p class="lot__meta">Актуальная витрина · vk.ru/put_auto</p>
+            </div>
           </article>
-          <article class="service-cell service-cell--customs" data-spotlight>
-            <div class="mono-tag">03 / CUSTOMS</div>
-            <h3>Таможня и доставка</h3>
-            <p>Полный маршрут до Владивостока / Забайкальска и далее в Иркутск или ваш город.</p>
+
+          <article class="lot">
+            <div class="lot__sheet"><b>LOT · 03</b><span>CN · VK</span></div>
+            <div class="lot__media">
+              <picture>
+                <source srcset="images/gallery-06.webp" type="image/webp" />
+                <img src="images/gallery-06.jpg" alt="Tank 300 — витрина VK Путь Авто" width="1400" height="900" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <div class="lot__body">
+              <div class="lot__route">Китай → РФ</div>
+              <h3>Tank 300</h3>
+              <p class="lot__meta">Витрина сообщества · VK Market</p>
+            </div>
           </article>
-          <article class="service-cell service-cell--detail" data-spotlight>
-            <div class="mono-tag">04 / DETAIL</div>
-            <h3>Детейлинг перед выдачей</h3>
-            <p>Машина приходит чистой и готовой к осмотру — клиенты отмечают это в отзывах на Яндекс.Картах.</p>
+
+          <article class="lot">
+            <div class="lot__sheet"><b>LOT · 04</b><span>Выдача</span></div>
+            <div class="lot__media">
+              <picture>
+                <source srcset="images/case-05.webp" type="image/webp" />
+                <img src="images/case-05.jpg" alt="Передача ключей Subaru — Путь Авто" width="960" height="1280" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <div class="lot__body">
+              <div class="lot__route">Иркутск · ключи</div>
+              <h3>После детейлинга</h3>
+              <p class="lot__meta">Subaru · передача клиенту</p>
+            </div>
           </article>
-          <article class="service-cell service-cell--deal" data-spotlight>
-            <div class="mono-tag">05 / DEAL</div>
-            <h3>Сопровождение сделки</h3>
-            <p>Один канал связи, фотоотчёты, прозрачная смета. Менеджеры на связи на всём пути — от лота до ПТС. Фикс услуг прописывается в договоре.</p>
+
+          <article class="lot">
+            <div class="lot__sheet"><b>LOT · 05</b><span>JP → IRK</span></div>
+            <div class="lot__media">
+              <picture>
+                <source srcset="images/case-06.webp" type="image/webp" />
+                <img src="images/case-06.jpg" alt="Honda Freed+ сзади — Путь Авто" width="960" height="1280" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <div class="lot__body">
+              <div class="lot__route">Япония → Иркутск</div>
+              <h3>Honda Freed+</h3>
+              <p class="lot__meta">Модель из открытых отзывов</p>
+            </div>
+          </article>
+
+          <article class="lot">
+            <div class="lot__sheet"><b>LOT · 06</b><span>VK</span></div>
+            <div class="lot__media">
+              <picture>
+                <source srcset="images/gallery-05.webp" type="image/webp" />
+                <img src="images/gallery-05.jpg" alt="Honda Fit — витрина VK" width="1400" height="900" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <div class="lot__body">
+              <div class="lot__route">VK Market</div>
+              <h3>Honda Fit</h3>
+              <p class="lot__meta">Ещё один лот с витрины</p>
+            </div>
+          </article>
+
+          <article class="lot">
+            <div class="lot__sheet"><b>LOT · 07</b><span>Подготовка</span></div>
+            <div class="lot__media">
+              <picture>
+                <source srcset="images/delivery-03.webp" type="image/webp" />
+                <img src="images/delivery-03.jpg" alt="Красный хэтчбек в зоне выдачи — Путь Авто" width="1280" height="960" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <div class="lot__body">
+              <div class="lot__route">Зона осмотра</div>
+              <h3>Перед передачей</h3>
+              <p class="lot__meta">Смета «под ключ» заранее</p>
+            </div>
+          </article>
+
+          <article class="lot">
+            <div class="lot__sheet"><b>LOT · 08</b><span>Выдача</span></div>
+            <div class="lot__media">
+              <picture>
+                <source srcset="images/gallery-04.webp" type="image/webp" />
+                <img src="images/gallery-04.jpg" alt="Toyota Corolla Cross с бантом на выдаче" width="1400" height="900" loading="lazy" decoding="async" />
+              </picture>
+            </div>
+            <div class="lot__body">
+              <div class="lot__route">Иркутск</div>
+              <h3>Corolla Cross</h3>
+              <p class="lot__meta">Выдача · фото с площадки</p>
+            </div>
           </article>
         </div>
+        <p class="lots-hint">← листайте лоты →</p>
       </div>
     </section>
 
-    <section class="section" id="calc" aria-labelledby="calc-title" style="background: linear-gradient(180deg, transparent, rgba(196,92,38,0.04), transparent);">
+    <section class="paper-band block" id="brief" aria-labelledby="brief-title">
       <div class="shell">
-        <div class="reveal mb-10 max-w-2xl">
-          <p class="eyebrow">Маршрутный лист</p>
-          <h2 id="calc-title" class="font-display text-3xl md:text-4xl font-bold m-0">Собрать бриф</h2>
-          <p class="lede">Выберите страну, бюджет и кузов — справа соберётся маршрутный лист и сообщение менеджеру. Точную смету считаем после брифа, без «магических» цен на авто.</p>
+        <div class="sec-head sec-head--stack">
+          <p class="kicker">Копия для менеджера</p>
+          <h2 id="brief-title" class="headline">Собрать бриф</h2>
+          <p class="lede">Заполните бланк — справа соберётся маршрутный лист и текст для WhatsApp. Точную смету считаем после брифа, без «магических» цен на авто.</p>
         </div>
 
-        <div class="calc-shell reveal" data-calc>
-          <div class="calc-panel">
+        <div class="brief" data-calc>
+          <div class="brief__stamp" aria-hidden="true">копия<br />клиент<br />№ —</div>
+
+          <div class="brief__form">
+            <h3 class="brief__title">Заявка на подбор</h3>
+
             <div class="field">
               <label id="country-label">Страна</label>
               <div class="choice-grid" role="radiogroup" aria-labelledby="country-label">
@@ -1269,16 +1548,16 @@
             </div>
           </div>
 
-          <div class="calc-result" aria-live="polite">
-            <h3 class="font-display text-xl m-0">Ваш маршрутный лист</h3>
+          <div class="brief__copy" aria-live="polite">
+            <h3>Маршрутный лист</h3>
             <div class="calc-estimate" data-calc-estimate>смета после брифа</div>
             <ul class="calc-summary" data-calc-summary></ul>
             <ul class="calc-list" data-calc-route></ul>
             <p class="calc-hint">
               Клиенты в открытых отзывах часто отмечают экономию порядка 150–500 тыс. ₽ относительно рынка РФ — это ориентир, не обещание. Итог зависит от лота, курса и комплектации. Стоимость услуг — фикс в договоре.
             </p>
-            <div class="grid gap-2">
-              <a class="btn btn--block" data-calc-wa href="https://wa.me/79501444418" rel="noopener noreferrer" target="_blank">Отправить бриф в WhatsApp</a>
+            <div class="brief__actions">
+              <a class="btn btn--ink btn--block" data-calc-wa href="https://wa.me/79501444418" rel="noopener noreferrer" target="_blank">Отправить бриф в WhatsApp</a>
               <a class="btn btn--ghost btn--block" data-calc-tg href="https://t.me/putavto38" rel="noopener noreferrer" target="_blank">Написать в Telegram</a>
             </div>
           </div>
@@ -1286,164 +1565,29 @@
       </div>
     </section>
 
-    <section class="section" id="cases" aria-labelledby="cases-title">
-      <div class="shell">
-        <div class="reveal mb-10 max-w-2xl">
-          <p class="eyebrow">Выдачи</p>
-          <h2 id="cases-title" class="font-display text-3xl md:text-4xl font-bold m-0">Реальные машины, не сток</h2>
-          <p class="lede">Фото с Яндекс.Карт «Путь Авто» и витрины VK Market (Honda Fit, Tank 300, Kia Stonic). Цены лотов — индивидуально под курс и маршрут.</p>
-        </div>
-
-        <div class="cases-editorial">
-          <article class="case reveal" data-spotlight>
-            <div class="case__media">
-              <picture>
-                <source srcset="images/case-01.webp" type="image/webp" />
-                <img src="images/case-01.jpg" alt="Honda Freed после выдачи — Путь Авто, Иркутск" width="1280" height="960" loading="lazy" decoding="async" />
-              </picture>
-            </div>
-            <div class="case__body">
-              <div class="case__route">Япония → Иркутск</div>
-              <h3>Honda Freed</h3>
-              <div class="case__price">семейный минивэн · под ключ</div>
-              <p class="case__note">Фото с карточки на Яндекс.Картах</p>
-            </div>
-          </article>
-
-          <article class="case reveal" data-spotlight>
-            <div class="case__media">
-              <picture>
-                <source srcset="images/delivery-01.webp" type="image/webp" />
-                <img src="images/delivery-01.jpg" alt="Honda Fit в наличии — витрина VK Путь Авто" width="1280" height="960" loading="lazy" decoding="async" />
-              </picture>
-            </div>
-            <div class="case__body">
-              <div class="case__route">VK Market</div>
-              <h3>Honda Fit</h3>
-              <div class="case__price">актуальная витрина · vk.ru/put_auto</div>
-              <p class="case__note">Фото товара из сообщества ВКонтакте</p>
-            </div>
-          </article>
-
-          <article class="case reveal" data-spotlight>
-            <div class="case__media">
-              <picture>
-                <source srcset="images/case-03.webp" type="image/webp" />
-                <img src="images/case-03.jpg" alt="Honda Freed, фронт — выдача Путь Авто" width="960" height="720" loading="lazy" decoding="async" />
-              </picture>
-            </div>
-            <div class="case__body">
-              <div class="case__route">Япония → РФ</div>
-              <h3>Freed после осмотра</h3>
-              <div class="case__price">бюджет согласуем до ставки</div>
-              <p class="case__note">Правый руль, без пробега по РФ</p>
-            </div>
-          </article>
-
-          <article class="case reveal" data-spotlight>
-            <div class="case__media">
-              <picture>
-                <source srcset="images/case-05.webp" type="image/webp" />
-                <img src="images/case-05.jpg" alt="Передача ключей Subaru — Путь Авто" width="960" height="1280" loading="lazy" decoding="async" />
-              </picture>
-            </div>
-            <div class="case__body">
-              <div class="case__route">Выдача</div>
-              <h3>Ключи в руках</h3>
-              <div class="case__price">Иркутск · после детейлинга</div>
-              <p class="case__note">Subaru после маршрута JP → РФ</p>
-            </div>
-          </article>
-
-          <article class="case reveal" data-spotlight>
-            <div class="case__media">
-              <picture>
-                <source srcset="images/delivery-03.webp" type="image/webp" />
-                <img src="images/delivery-03.jpg" alt="Красный хэтчбек в зоне выдачи — Путь Авто" width="1280" height="960" loading="lazy" decoding="async" />
-              </picture>
-            </div>
-            <div class="case__body">
-              <div class="case__route">Подготовка</div>
-              <h3>Перед передачей</h3>
-              <div class="case__price">смета «под ключ» заранее</div>
-              <p class="case__note">Зона осмотра и детейлинга</p>
-            </div>
-          </article>
-
-          <article class="case reveal" data-spotlight>
-            <div class="case__media">
-              <picture>
-                <source srcset="images/case-06.webp" type="image/webp" />
-                <img src="images/case-06.jpg" alt="Honda Freed+ сзади — Путь Авто" width="960" height="1280" loading="lazy" decoding="async" />
-              </picture>
-            </div>
-            <div class="case__body">
-              <div class="case__route">Япония → Иркутск</div>
-              <h3>Honda Freed+</h3>
-              <div class="case__price">модель из открытых отзывов</div>
-              <p class="case__note">Клиенты отмечают чистоту после детейлинга</p>
-            </div>
-          </article>
-        </div>
-
-        <div class="filmstrip reveal" aria-label="Дополнительные фото выдач">
-          <figure>
-            <picture>
-              <source srcset="images/gallery-06.webp" type="image/webp" />
-              <img src="images/gallery-06.jpg" alt="Tank 300 — витрина VK Путь Авто" width="1400" height="900" loading="lazy" decoding="async" />
-            </picture>
-            <figcaption>Tank 300 · VK Market</figcaption>
-          </figure>
-          <figure>
-            <picture>
-              <source srcset="images/gallery-05.webp" type="image/webp" />
-              <img src="images/gallery-05.jpg" alt="Honda Fit — витрина VK" width="1400" height="900" loading="lazy" decoding="async" />
-            </picture>
-            <figcaption>Honda Fit · VK Market</figcaption>
-          </figure>
-          <figure>
-            <picture>
-              <source srcset="images/gallery-01.webp" type="image/webp" />
-              <img src="images/gallery-01.jpg" alt="Авто на площадке логистики с защитной плёнкой" width="1400" height="900" loading="lazy" decoding="async" />
-            </picture>
-            <figcaption>Логистика · защитная плёнка</figcaption>
-          </figure>
-          <figure>
-            <picture>
-              <source srcset="images/gallery-04.webp" type="image/webp" />
-              <img src="images/gallery-04.jpg" alt="Toyota Corolla Cross с бантом на выдаче" width="1400" height="900" loading="lazy" decoding="async" />
-            </picture>
-            <figcaption>Выдача · Corolla Cross</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section pt-0" aria-labelledby="office-title">
+    <section class="asphalt-band block block--tight" aria-labelledby="office-title">
       <div class="shell--wide">
-        <div class="office-strip reveal">
-          <div class="office-media">
+        <div class="office">
+          <div class="office__media">
             <picture>
               <source srcset="images/office-01.webp" type="image/webp" />
               <img src="images/office-01.jpg" alt="ТЦ Пассаж, ул. Дзержинского — офис Путь Авто, Иркутск" width="1280" height="960" loading="lazy" decoding="async" />
             </picture>
           </div>
-          <div class="office-copy">
+          <div class="office__copy">
             <div>
-              <p class="eyebrow">Офис</p>
-              <h2 id="office-title" class="font-display text-2xl md:text-3xl font-bold m-0">ТЦ «Пассаж», 3 этаж</h2>
-              <p class="lede" style="margin-top:0.85rem; margin-bottom:0">
+              <p class="kicker">Офис выдачи</p>
+              <h2 id="office-title" class="headline" style="font-size: clamp(1.85rem, 4vw, 2.6rem); max-width: 14ch;">ТЦ «Пассаж», 3 этаж</h2>
+              <p class="lede" style="margin-top:0.85rem">
                 ул. Дзержинского, 32 стр. 1, офис 323 — тот же комплекс, что и Литвинова 18. Входы со стороны обеих улиц.
               </p>
             </div>
-
-            <div class="office-meta">
+            <div class="office__meta">
               <div><strong>Часы:</strong> ежедневно 09:00–21:00</div>
               <div><strong>Телефон:</strong> <a href="tel:+79501444418">+7 (950) 144-44-18</a></div>
               <div><strong>Выдача:</strong> осмотр и передача ключей в Иркутске</div>
             </div>
-
-            <div class="office-copy__actions">
+            <div class="office__actions">
               <a class="btn" href="https://wa.me/79501444418?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%B5%D1%85%D0%B0%D1%82%D1%8C%20%D0%B2%20%D0%BE%D1%84%D0%B8%D1%81." rel="noopener noreferrer" target="_blank">WhatsApp</a>
               <a class="btn btn--ghost" href="https://t.me/putavto38" rel="noopener noreferrer" target="_blank">Telegram</a>
               <a class="btn btn--ghost" href="https://yandex.ru/maps/org/put_avto/119194473567/" rel="noopener noreferrer" target="_blank">Яндекс.Карты</a>
@@ -1453,52 +1597,54 @@
       </div>
     </section>
 
-    <section class="section" id="reviews" aria-labelledby="reviews-title">
+    <section class="asphalt-band block" id="reviews" aria-labelledby="reviews-title">
       <div class="shell">
-        <div class="reveal mb-8 max-w-2xl">
-          <p class="eyebrow">Отзывы</p>
-          <h2 id="reviews-title" class="font-display text-3xl md:text-4xl font-bold m-0">Слова клиентов, не скрипты</h2>
+        <div class="sec-head sec-head--stack">
+          <p class="kicker">Выдержки · Яндекс 5,0</p>
+          <h2 id="reviews-title" class="headline headline--wide">Слова клиентов</h2>
           <p class="lede">
-            Короткие выдержки с публичной карточки на Яндекс.Картах (рейтинг 5,0). Полные тексты —
+            Короткие цитаты с публичной карточки на Яндекс.Картах. Полные тексты —
             <a href="https://yandex.ru/maps/org/put_avto/119194473567/reviews/" rel="noopener noreferrer" target="_blank">по ссылке</a>.
           </p>
         </div>
 
-        <div class="reviews-stack">
-          <article class="review reveal">
-            <blockquote>«Артем с большим пониманием подошёл к подбору. На всём пути от выбора до выдачи ключей были на связи, присылали фото. Машина оказалась лучше, чем ожидала.»</blockquote>
+        <div class="quotes">
+          <article class="quote">
+            <blockquote>Артем с большим пониманием подошёл к подбору. На всём пути от выбора до выдачи ключей были на связи, присылали фото. Машина оказалась лучше, чем ожидала.</blockquote>
             <footer>
               <strong>Анастасия К.</strong>
               <a href="https://yandex.ru/maps/org/put_avto/119194473567/reviews/" rel="noopener noreferrer" target="_blank">Яндекс.Карты</a>
             </footer>
           </article>
-          <article class="review reveal">
-            <blockquote>«Александр выиграл на аукционе Honda Freed+. Через месяц с небольшим машина была в Иркутске, ждала в детейлинге Путь Авто — помытая, отполированная, без окрасов и замен.»</blockquote>
+          <article class="quote">
+            <blockquote>Александр выиграл на аукционе Honda Freed+. Через месяц с небольшим машина была в Иркутске, ждала в детейлинге — помытая, отполированная, без окрасов и замен.</blockquote>
             <footer>
               <strong>Наталия С.</strong>
               <a href="https://yandex.ru/maps/org/put_avto/119194473567/reviews/" rel="noopener noreferrer" target="_blank">Яндекс.Карты</a>
             </footer>
           </article>
-          <article class="review reveal">
-            <blockquote>«Прозрачность на всех этапах: стоимость доставки, растаможки и услуг озвучили сразу. Нашли лучший вариант по цене/состоянию/комплектации и объяснили мелкие риски по фото.»</blockquote>
+          <article class="quote">
+            <blockquote>Прозрачность на всех этапах: стоимость доставки, растаможки и услуг озвучили сразу. Нашли лучший вариант по цене, состоянию и комплектации.</blockquote>
             <footer>
               <strong>Матвей Степ.</strong>
-              <div><a href="https://yandex.ru/maps/org/put_avto/119194473567/reviews/" rel="noopener noreferrer" target="_blank">Яндекс.Карты · Toyota Corolla Sport</a></div>
+              <a href="https://yandex.ru/maps/org/put_avto/119194473567/reviews/" rel="noopener noreferrer" target="_blank">Яндекс.Карты · Toyota Corolla Sport</a>
             </footer>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section pt-0" id="faq" aria-labelledby="faq-title">
+    <section class="paper-band block block--tight" id="faq" aria-labelledby="faq-title">
       <div class="shell">
-        <div class="reveal mb-8 max-w-2xl">
-          <p class="eyebrow">FAQ</p>
-          <h2 id="faq-title" class="font-display text-3xl md:text-4xl font-bold m-0">Частые вопросы</h2>
+        <div class="sec-head">
+          <div>
+            <p class="kicker">Справка</p>
+            <h2 id="faq-title" class="headline">Частые вопросы</h2>
+          </div>
           <p class="lede">Коротко о том, что обычно спрашивают перед первой ставкой.</p>
         </div>
 
-        <div class="faq reveal max-w-3xl">
+        <div class="faq" style="max-width: 42rem;">
           <details>
             <summary>Как сделать заказ?</summary>
             <p>Напишите в WhatsApp / Telegram или оставьте заявку на сайте. Согласуем бюджет, страну и модель, затем подберём лоты и согласуем ставку.</p>
@@ -1523,16 +1669,18 @@
       </div>
     </section>
 
-    <section class="section" id="contacts" aria-labelledby="contacts-title">
+    <section class="asphalt-band block" id="contacts" aria-labelledby="contacts-title">
       <div class="shell">
-        <div class="reveal mb-10 max-w-2xl">
-          <p class="eyebrow">Контакты</p>
-          <h2 id="contacts-title" class="font-display text-3xl md:text-4xl font-bold m-0">Офис в Иркутске</h2>
+        <div class="sec-head">
+          <div>
+            <p class="kicker">Контакты</p>
+            <h2 id="contacts-title" class="headline">Офис в Иркутске</h2>
+          </div>
           <p class="lede">ТЦ «Пассаж» — входы со стороны ул. Дзержинского и ул. Литвинова. Офис 323, 3 этаж.</p>
         </div>
 
-        <div class="contact-grid reveal">
-          <div class="contact-panel">
+        <div class="contact-grid">
+          <div class="contact-card">
             <div class="contact-row">
               <span>Адрес</span>
               <strong>г. Иркутск, ул. Дзержинского, 32 стр. 1, офис 323, ТЦ «Пассаж»</strong>
@@ -1553,7 +1701,7 @@
             </div>
             <div class="contact-row" style="border-bottom:0">
               <span>Часы</span>
-              <strong>ежедневно 09:00–21:00</strong>
+              <strong class="tabular">ежедневно 09:00–21:00</strong>
             </div>
 
             <div class="map-embed">
@@ -1573,7 +1721,7 @@
             </p>
 
             <h3>Заявка на подбор</h3>
-            <p class="calc-hint">На GitHub Pages форма откроет WhatsApp с предзаполненным текстом. На Netlify — уйдёт в Forms.</p>
+            <p class="calc-hint" style="color: var(--mute-on-dark);">На GitHub Pages форма откроет WhatsApp с предзаполненным текстом. На Netlify — уйдёт в Forms.</p>
 
             <div class="form__row">
               <div class="field">
@@ -1605,12 +1753,12 @@
   </main>
 
   <footer class="site-footer">
-    <div class="shell flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <div class="shell site-footer__inner">
       <div>
-        <div class="font-display text-paper text-lg font-bold">Путь Авто</div>
-        <p class="m-0 mt-1">Иркутск · авто из Японии, Кореи и Китая под заказ</p>
+        <div class="site-footer__brand">Путь Авто</div>
+        <p style="margin:0.45rem 0 0;">Иркутск · авто из Японии, Кореи и Китая под заказ</p>
       </div>
-      <div class="flex flex-wrap gap-x-4 gap-y-2">
+      <div class="site-footer__links">
         <a href="tel:+79501444418">+7 (950) 144-44-18</a>
         <a href="https://wa.me/79501444418" rel="noopener noreferrer" target="_blank">WhatsApp</a>
         <a href="https://t.me/putavto38" rel="noopener noreferrer" target="_blank">Telegram</a>
@@ -1645,17 +1793,6 @@
         });
         nav.addEventListener('click', (e) => {
           if (e.target instanceof HTMLAnchorElement) setOpen(false);
-        });
-      }
-
-      function initSpotlight() {
-        if (reduceMotion || window.matchMedia('(pointer: coarse)').matches) return;
-        qsa('[data-spotlight]').forEach((el) => {
-          el.addEventListener('pointermove', (e) => {
-            const r = el.getBoundingClientRect();
-            el.style.setProperty('--mx', `${e.clientX - r.left}px`);
-            el.style.setProperty('--my', `${e.clientY - r.top}px`);
-          });
         });
       }
 
@@ -1805,70 +1942,66 @@
         });
       }
 
-      function initMotion() {
-        const nodes = qsa('.reveal');
+      function initSpine() {
+        const spine = qs('[data-spine]');
+        const fill = qs('[data-spine-fill]');
+        if (!spine || !fill) return;
+
+        const items = qsa('.spine-item', spine);
+
         if (reduceMotion) {
-          nodes.forEach((n) => n.classList.add('is-in'));
+          fill.style.height = '100%';
+          items.forEach((el) => el.classList.add('is-active'));
           return;
         }
 
-        const boot = () => {
-          if (window.gsap && window.ScrollTrigger) {
-            gsap.registerPlugin(ScrollTrigger);
-            nodes.forEach((n) => {
-              gsap.fromTo(
-                n,
-                { autoAlpha: 0, y: 28 },
-                {
-                  autoAlpha: 1,
-                  y: 0,
-                  duration: 0.75,
-                  ease: 'power2.out',
-                  scrollTrigger: {
-                    trigger: n,
-                    start: 'top 88%',
-                    once: true,
-                  },
-                }
-              );
-            });
+        const update = () => {
+          const rect = spine.getBoundingClientRect();
+          const vh = window.innerHeight || 1;
+          const start = vh * 0.75;
+          const end = vh * 0.25;
+          const progress = Math.min(1, Math.max(0, (start - rect.top) / (rect.height + (start - end))));
+          fill.style.height = `${Math.round(progress * 100)}%`;
 
-            const heroBits = qsa('[data-hero-brand], [data-hero-title], [data-hero-lede], [data-hero-cta]');
-            gsap.from(heroBits, {
-              autoAlpha: 0,
-              y: 24,
-              duration: 0.9,
-              stagger: 0.12,
-              ease: 'power2.out',
-              delay: 0.1,
-            });
-            return;
-          }
-
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add('is-in');
-                  io.unobserve(entry.target);
-                }
-              });
-            },
-            { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
-          );
-          nodes.forEach((n) => io.observe(n));
+          items.forEach((el) => {
+            const r = el.getBoundingClientRect();
+            el.classList.toggle('is-active', r.top < vh * 0.62);
+          });
         };
 
-        if (window.gsap) boot();
-        else window.addEventListener('load', boot);
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+      }
+
+      function initLotsScrub() {
+        const track = qs('[data-lots]');
+        if (!track || reduceMotion) return;
+        let dragging = false;
+        let startX = 0;
+        let startScroll = 0;
+
+        track.addEventListener('pointerdown', (e) => {
+          if (e.pointerType === 'touch') return;
+          dragging = true;
+          startX = e.clientX;
+          startScroll = track.scrollLeft;
+          track.setPointerCapture(e.pointerId);
+        });
+        track.addEventListener('pointermove', (e) => {
+          if (!dragging) return;
+          track.scrollLeft = startScroll - (e.clientX - startX);
+        });
+        track.addEventListener('pointerup', () => { dragging = false; });
+        track.addEventListener('pointercancel', () => { dragging = false; });
       }
 
       document.addEventListener('DOMContentLoaded', () => {
         initMenu();
-        initSpotlight();
         initCalc();
         initForm();
-        initMotion();
+        initSpine();
+        initLotsScrub();
       });
     })();
   </script>
