@@ -263,8 +263,11 @@
 
     .services-board {
       display: grid;
-      grid-template-columns: 1.2fr 0.9fr;
-      grid-template-rows: auto auto auto;
+      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-areas:
+        "select bid"
+        "detail customs"
+        "deal deal";
       gap: 1px;
       background: var(--line);
       border: 1px solid var(--line);
@@ -287,14 +290,17 @@
       pointer-events: none;
     }
     .service-cell:hover::after { opacity: 1; }
-    .service-cell:nth-child(1) { grid-row: span 2; }
-    .service-cell:nth-child(5) { grid-column: 1 / -1; }
+    .service-cell--select { grid-area: select; }
+    .service-cell--bid { grid-area: bid; }
+    .service-cell--customs { grid-area: customs; }
+    .service-cell--detail { grid-area: detail; }
+    .service-cell--deal { grid-area: deal; }
     .service-cell h3 {
       margin: 0 0 0.65rem;
       font-family: Syne, system-ui, sans-serif;
       font-size: clamp(1.2rem, 2.5vw, 1.55rem);
     }
-    .service-cell p { margin: 0; color: var(--mute); max-width: 34rem; }
+    .service-cell p { margin: 0; color: var(--mute); max-width: 42rem; }
     .service-cell .mono-tag {
       font-family: ui-monospace, monospace;
       font-size: 0.7rem;
@@ -303,9 +309,15 @@
       margin-bottom: 1rem;
     }
     @media (max-width: 800px) {
-      .services-board { grid-template-columns: 1fr; }
-      .service-cell:nth-child(1),
-      .service-cell:nth-child(5) { grid-column: auto; grid-row: auto; }
+      .services-board {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "select"
+          "bid"
+          "customs"
+          "detail"
+          "deal";
+      }
     }
 
     .calc-shell {
@@ -373,11 +385,31 @@
     .select:focus, .input:focus, .textarea:focus { border-color: var(--signal); }
     .calc-estimate {
       font-family: Syne, system-ui, sans-serif;
-      font-size: clamp(1.35rem, 3vw, 1.85rem);
+      font-size: clamp(1.2rem, 2.6vw, 1.55rem);
       font-weight: 700;
       color: var(--signal);
-      margin: 0.5rem 0 1rem;
+      margin: 0.5rem 0 0.85rem;
       letter-spacing: -0.02em;
+    }
+    .calc-summary {
+      list-style: none;
+      margin: 0 0 1rem;
+      padding: 0;
+      display: grid;
+      gap: 0.45rem;
+    }
+    .calc-summary li {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.9rem;
+      color: var(--mute);
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .calc-summary span:last-child {
+      color: var(--paper);
+      text-align: right;
     }
     .calc-list {
       list-style: none;
@@ -479,28 +511,29 @@
 
     .reviews-stack {
       display: grid;
-      gap: 1.25rem;
+      gap: 0;
+      max-width: 54rem;
     }
     .review {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 11rem;
-      gap: 1.5rem;
-      padding: 1.5rem 0;
+      grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 9.5rem);
+      column-gap: 1.25rem;
+      row-gap: 0.65rem;
+      padding: 1.35rem 0;
       border-top: 1px solid var(--line);
       align-items: start;
     }
     .review:last-child { border-bottom: 1px solid var(--line); }
-    .review:nth-child(2) { padding-left: clamp(0rem, 6vw, 4rem); }
-    .review:nth-child(3) { padding-left: clamp(0rem, 12vw, 8rem); }
     .review blockquote {
       margin: 0;
-      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      font-size: clamp(1.05rem, 2.2vw, 1.2rem);
       line-height: 1.45;
       font-weight: 400;
     }
     .review footer {
       font-size: 0.85rem;
       color: var(--mute);
+      padding-top: 0.15rem;
     }
     .review footer strong {
       display: block;
@@ -510,10 +543,9 @@
     }
     .review a { color: var(--mute); text-decoration: underline; text-underline-offset: 3px; }
     @media (max-width: 700px) {
-      .review, .review:nth-child(2), .review:nth-child(3) {
+      .review {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
-        padding-left: 0;
+        gap: 0.65rem;
       }
     }
 
@@ -603,27 +635,63 @@
 
     .office-strip {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 1rem;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 0;
       align-items: stretch;
+      min-height: min(58vh, 520px);
+      border: 1px solid var(--line);
+      overflow: hidden;
     }
-    .office-strip img {
+    .office-media {
+      min-height: 280px;
+      background: #0a0c0e;
+    }
+    .office-media picture {
+      display: block;
       width: 100%;
       height: 100%;
-      min-height: 240px;
+      min-height: inherit;
+    }
+    .office-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
       object-fit: cover;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-sm);
+      object-position: center 42%;
+      display: block;
     }
     .office-copy {
-      border: 1px solid var(--line);
-      padding: clamp(1.25rem, 3vw, 2rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: clamp(1.4rem, 3.2vw, 2.4rem);
       background:
-        linear-gradient(135deg, rgba(196,92,38,0.08), transparent 40%),
+        linear-gradient(160deg, rgba(196,92,38,0.1), transparent 42%),
         var(--panel);
     }
-    @media (max-width: 760px) {
-      .office-strip { grid-template-columns: 1fr; }
+    .office-copy__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: auto;
+    }
+    .office-meta {
+      display: grid;
+      gap: 0.55rem;
+      padding-top: 0.35rem;
+      border-top: 1px solid var(--line);
+      color: var(--mute);
+      font-size: 0.92rem;
+    }
+    .office-meta strong { color: var(--paper); font-weight: 600; }
+    @media (max-width: 860px) {
+      .office-strip {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+      .office-media { min-height: 240px; max-height: 320px; }
+      .office-media img { min-height: 240px; max-height: 320px; }
     }
 
     .site-footer {
@@ -681,7 +749,11 @@
     }
 
     .container {
-      width: min(1120px, calc(100% - 2rem));
+      width: min(1200px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+    .container--wide {
+      width: min(1480px, calc(100% - 1.25rem));
       margin-inline: auto;
     }
   </style>
@@ -743,7 +815,7 @@
       <nav class="nav-desktop hidden md:flex items-center gap-6" aria-label="Основная навигация">
         <a href="#path">Путь</a>
         <a href="#services">Услуги</a>
-        <a href="#calc">Калькулятор</a>
+        <a href="#calc">Бриф</a>
         <a href="#cases">Выдачи</a>
         <a href="#reviews">Отзывы</a>
         <a href="#contacts">Контакты</a>
@@ -769,7 +841,7 @@
     <nav id="mobile-nav" class="mobile-nav md:hidden" data-mobile-nav aria-label="Мобильная навигация">
       <a href="#path">Путь</a>
       <a href="#services">Услуги</a>
-      <a href="#calc">Калькулятор</a>
+      <a href="#calc">Бриф</a>
       <a href="#cases">Выдачи</a>
       <a href="#reviews">Отзывы</a>
       <a href="#faq">FAQ</a>
@@ -801,7 +873,7 @@
           Подбор лота, аукцион, таможня и доставка. Вы получаете понятный маршрут и машину без пробега по РФ — с выдачей в Иркутске.
         </p>
         <div class="flex flex-wrap gap-3 mt-7" data-hero-cta>
-          <a class="btn" href="#calc">Рассчитать путь авто</a>
+          <a class="btn" href="#calc">Собрать бриф</a>
           <a class="btn btn--ghost" href="https://wa.me/79501444418?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%20%D0%B0%D0%B2%D1%82%D0%BE%20%D0%BF%D0%BE%D0%B4%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7." rel="noopener noreferrer" target="_blank">Написать в WhatsApp</a>
         </div>
       </div>
@@ -878,27 +950,27 @@
         </div>
 
         <div class="services-board reveal">
-          <article class="service-cell" data-spotlight>
+          <article class="service-cell service-cell--select" data-spotlight>
             <div class="mono-tag">01 / SELECT</div>
             <h3>Подбор под задачу</h3>
             <p>Семейный хэтчбек, гибрид, кроссовер или премиум — ищем конкретную комплектацию, а не «что попалось».</p>
           </article>
-          <article class="service-cell" data-spotlight>
+          <article class="service-cell service-cell--bid" data-spotlight>
             <div class="mono-tag">02 / BID</div>
             <h3>Ставка и выкуп лота</h3>
             <p>Работаем с аукционами Японии, Кореи и Китая. Лимит ставки согласуем заранее.</p>
           </article>
-          <article class="service-cell" data-spotlight>
+          <article class="service-cell service-cell--customs" data-spotlight>
             <div class="mono-tag">03 / CUSTOMS</div>
             <h3>Таможня и доставка</h3>
             <p>Полный маршрут до Владивостока / Забайкальска и далее в Иркутск или ваш город.</p>
           </article>
-          <article class="service-cell" data-spotlight>
+          <article class="service-cell service-cell--detail" data-spotlight>
             <div class="mono-tag">04 / DETAIL</div>
             <h3>Детейлинг перед выдачей</h3>
             <p>Машина приходит чистой и готовой к осмотру — клиенты отмечают это в отзывах на Яндекс.Картах.</p>
           </article>
-          <article class="service-cell" data-spotlight>
+          <article class="service-cell service-cell--deal" data-spotlight>
             <div class="mono-tag">05 / DEAL</div>
             <h3>Сопровождение сделки</h3>
             <p>Один канал связи, фотоотчёты, прозрачная смета. Менеджеры на связи на всём пути — от лота до ПТС. Фикс услуг прописывается в договоре.</p>
@@ -910,9 +982,9 @@
     <section class="section" id="calc" aria-labelledby="calc-title" style="background: linear-gradient(180deg, transparent, rgba(196,92,38,0.04), transparent);">
       <div class="container">
         <div class="reveal mb-10 max-w-2xl">
-          <p class="eyebrow">Signature</p>
-          <h2 id="calc-title" class="font-display text-3xl md:text-4xl font-bold m-0">Калькулятор пути</h2>
-          <p class="lede">Четыре шага — и готовое сообщение менеджеру. Это ориентир по маршруту и экономии, не финальная цена авто: точную смету считаем после брифа.</p>
+          <p class="eyebrow">Маршрутный лист</p>
+          <h2 id="calc-title" class="font-display text-3xl md:text-4xl font-bold m-0">Собрать бриф</h2>
+          <p class="lede">Выберите страну, бюджет и кузов — справа соберётся маршрутный лист и сообщение менеджеру. Точную смету считаем после брифа, без «магических» цен на авто.</p>
         </div>
 
         <div class="calc-shell reveal" data-calc>
@@ -969,10 +1041,11 @@
 
           <div class="calc-result" aria-live="polite">
             <h3 class="font-display text-xl m-0">Ваш маршрутный лист</h3>
-            <div class="calc-estimate" data-calc-estimate>экономия ориентир 150–350 тыс. ₽</div>
+            <div class="calc-estimate" data-calc-estimate>смета после брифа</div>
+            <ul class="calc-summary" data-calc-summary></ul>
             <ul class="calc-list" data-calc-route></ul>
             <p class="calc-hint">
-              Ориентир экономии — 150–500 тыс. ₽ из публичных материалов компании. Итог зависит от лота, курса и комплектации. Стоимость услуг — фикс в договоре.
+              Клиенты в открытых отзывах часто отмечают экономию порядка 150–500 тыс. ₽ относительно рынка РФ — это ориентир, не обещание. Итог зависит от лота, курса и комплектации. Стоимость услуг — фикс в договоре.
             </p>
             <div class="grid gap-2">
               <a class="btn btn--block" data-calc-wa href="https://wa.me/79501444418" rel="noopener noreferrer" target="_blank">Отправить бриф в WhatsApp</a>
@@ -1086,19 +1159,34 @@
     </section>
 
     <section class="section pt-0" aria-labelledby="office-title">
-      <div class="container">
+      <div class="container--wide">
         <div class="office-strip reveal">
-          <picture>
-            <source srcset="images/office-01.webp" type="image/webp" />
-            <img src="images/office-01.jpg" alt="Офис Путь Авто в ТЦ Пассаж, Иркутск" width="1280" height="960" loading="lazy" decoding="async" />
-          </picture>
+          <div class="office-media">
+            <picture>
+              <source srcset="images/delivery-03.webp" type="image/webp" />
+              <img src="images/delivery-03.jpg" alt="Автомобиль перед выдачей — Путь Авто, Иркутск" width="1280" height="1600" loading="lazy" decoding="async" />
+            </picture>
+          </div>
           <div class="office-copy">
-            <p class="eyebrow">Офис</p>
-            <h2 id="office-title" class="font-display text-2xl md:text-3xl font-bold m-0">ТЦ «Пассаж», 3 этаж</h2>
-            <p class="lede" style="margin-top:0.85rem">
-              ул. Дзержинского, 32 стр. 1, офис 323 — тот же комплекс, что и Литвинова 18. Входы со стороны обеих улиц.
-            </p>
-            <p class="mt-4 mb-0 text-mute text-sm">Ежедневно ≈ 09:00–21:00 · +7 (950) 144-44-18</p>
+            <div>
+              <p class="eyebrow">Офис</p>
+              <h2 id="office-title" class="font-display text-2xl md:text-3xl font-bold m-0">ТЦ «Пассаж», 3 этаж</h2>
+              <p class="lede" style="margin-top:0.85rem; margin-bottom:0">
+                ул. Дзержинского, 32 стр. 1, офис 323 — тот же комплекс, что и Литвинова 18. Входы со стороны обеих улиц.
+              </p>
+            </div>
+
+            <div class="office-meta">
+              <div><strong>Часы:</strong> ежедневно 09:00–21:00</div>
+              <div><strong>Телефон:</strong> <a href="tel:+79501444418">+7 (950) 144-44-18</a></div>
+              <div><strong>Выдача:</strong> осмотр и передача ключей в Иркутске</div>
+            </div>
+
+            <div class="office-copy__actions">
+              <a class="btn" href="https://wa.me/79501444418?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%B5%D1%85%D0%B0%D1%82%D1%8C%20%D0%B2%20%D0%BE%D1%84%D0%B8%D1%81." rel="noopener noreferrer" target="_blank">WhatsApp</a>
+              <a class="btn btn--ghost" href="https://t.me/putavto38" rel="noopener noreferrer" target="_blank">Telegram</a>
+              <a class="btn btn--ghost" href="https://yandex.ru/maps/org/put_avto/119194473567/" rel="noopener noreferrer" target="_blank">Яндекс.Карты</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1310,28 +1398,31 @@
         });
       }
 
-      function buildMessage({ country, budget, body, term }) {
+      function buildMessage({ country, budget, body, term, timeline }) {
         return [
-          'Здравствуйте! Хочу рассчитать путь авто.',
+          'Здравствуйте! Хочу собрать бриф на подбор авто.',
           `Страна: ${country}`,
           `Бюджет: ${budget}`,
           `Кузов: ${body}`,
-          `Срок: ${term}`,
-          'Подскажите ориентир по смете и следующим шагам.',
+          `Желаемый срок: ${term}`,
+          `Ориентир по маршруту: ${timeline}`,
+          'Подскажите следующие шаги и смету после брифа.',
         ].join('\n');
       }
 
-      function estimateText(budget) {
-        if (budget.includes('до 900')) return 'экономия ориентир 150–250 тыс. ₽';
-        if (budget.includes('900 000 – 1 500')) return 'экономия ориентир 150–350 тыс. ₽';
-        if (budget.includes('1 500 000 – 2 500')) return 'экономия ориентир 250–450 тыс. ₽';
-        return 'экономия ориентир 300–500 тыс. ₽';
+      function timelineByCountry(country) {
+        const map = {
+          Япония: '4–8 недель',
+          Корея: '3–7 недель',
+          Китай: '3–6 недель',
+        };
+        return map[country] || map['Япония'];
       }
 
       function routeLines(country) {
         const map = {
-          Япония: ['Аукцион JP', 'Ставка и выкуп', 'Владивосток', 'Иркутск · выдача'],
-          Корея: ['Аукцион / рынок KR', 'Проверка и выкуп', 'Логистика', 'Иркутск · выдача'],
+          Япония: ['Аукцион JP', 'Ставка и выкуп', 'Порт · Владивосток', 'Иркутск · выдача'],
+          Корея: ['Аукцион / рынок KR', 'Проверка и выкуп', 'Порт · Владивосток', 'Иркутск · выдача'],
           Китай: ['Площадка CN', 'Проверка и выкуп', 'Забайкальск', 'Иркутск · выдача'],
         };
         return map[country] || map['Япония'];
@@ -1341,6 +1432,7 @@
         const root = qs('[data-calc]');
         if (!root) return;
         const estimate = qs('[data-calc-estimate]', root);
+        const summary = qs('[data-calc-summary]', root);
         const route = qs('[data-calc-route]', root);
         const wa = qs('[data-calc-wa]', root);
         const tg = qs('[data-calc-tg]', root);
@@ -1357,11 +1449,21 @@
 
         const render = () => {
           const data = read();
-          estimate.textContent = estimateText(data.budget);
+          const timeline = timelineByCountry(data.country);
+          estimate.textContent = 'смета после брифа';
+          summary.innerHTML = [
+            ['Страна', data.country],
+            ['Кузов', data.body],
+            ['Бюджет', data.budget],
+            ['Срок по маршруту', timeline],
+            ['Ваш ориентир', data.term],
+          ]
+            .map(([label, value]) => `<li><span>${label}</span><span>${value}</span></li>`)
+            .join('');
           route.innerHTML = routeLines(data.country)
             .map((line, i) => `<li><strong>${String(i + 1).padStart(2, '0')}</strong> · ${line}</li>`)
             .join('');
-          const msg = buildMessage(data);
+          const msg = buildMessage({ ...data, timeline });
           wa.href = `https://wa.me/79501444418?text=${encodeURIComponent(msg)}`;
           tg.href = 'https://t.me/putavto38';
           tg.dataset.msg = msg;
