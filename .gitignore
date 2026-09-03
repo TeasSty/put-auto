@@ -23,3 +23,9 @@ Thumbs.db
 # logs
 npm-debug.log*
 *.log
+
+# photo harvest scratch
+images/_raw/
+images/_preview/
+scripts/vk-photos-widget.html
+scripts/*.html

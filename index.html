@@ -537,15 +537,42 @@
     }
     .case__price { font-size: 0.9rem; color: var(--paper); }
     .case__note { margin: 0.35rem 0 0; font-size: 0.82rem; color: var(--mute); }
+    .filmstrip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: clamp(1.75rem, 4vw, 2.75rem);
+    }
+    .filmstrip figure {
+      margin: 0;
+      min-width: 0;
+    }
+    .filmstrip picture,
+    .filmstrip img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+    .filmstrip figcaption {
+      margin-top: 0.45rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
     @media (max-width: 900px) {
       .cases-editorial { grid-template-columns: 1fr 1fr; }
       .case:nth-child(1),
       .case:nth-child(4),
       .case:nth-child(5) { grid-column: auto; grid-row: auto; }
       .case:nth-child(1) .case__media { aspect-ratio: 4 / 3; min-height: 0; }
+      .filmstrip { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 560px) {
       .cases-editorial { grid-template-columns: 1fr; }
+      .filmstrip { gap: 0.5rem; }
     }
 
     .reviews-stack {
@@ -1057,7 +1084,7 @@
         <picture>
           <source srcset="images/hero-wide.webp" type="image/webp" media="(min-width: 768px)" />
           <source srcset="images/hero-01.webp" type="image/webp" />
-          <img src="images/hero-01.jpg" alt="" width="960" height="1280" fetchpriority="high" decoding="async" />
+          <img src="images/hero-01.jpg" alt="Toyota Corolla Cross на выдаче в Путь Авто, Иркутск" width="960" height="1280" fetchpriority="high" decoding="async" />
         </picture>
       </div>
       <div class="hero__veil" aria-hidden="true"></div>
@@ -1264,7 +1291,7 @@
         <div class="reveal mb-10 max-w-2xl">
           <p class="eyebrow">Выдачи</p>
           <h2 id="cases-title" class="font-display text-3xl md:text-4xl font-bold m-0">Реальные машины, не сток</h2>
-          <p class="lede">Фото с публичной галереи и отзывов «Путь Авто» на Яндекс.Картах. Цены лотов считаем индивидуально под курс и маршрут.</p>
+          <p class="lede">Фото с Яндекс.Карт «Путь Авто» и витрины VK Market (Honda Fit, Tank 300, Kia Stonic). Цены лотов — индивидуально под курс и маршрут.</p>
         </div>
 
         <div class="cases-editorial">
@@ -1272,14 +1299,14 @@
             <div class="case__media">
               <picture>
                 <source srcset="images/case-01.webp" type="image/webp" />
-                <img src="images/case-01.jpg" alt="Авто из наличия / под заказ — Путь Авто" width="1280" height="960" loading="lazy" decoding="async" />
+                <img src="images/case-01.jpg" alt="Honda Freed после выдачи — Путь Авто, Иркутск" width="1280" height="960" loading="lazy" decoding="async" />
               </picture>
             </div>
             <div class="case__body">
-              <div class="case__route">Китай → РФ</div>
-              <h3>Авто из наличия / под заказ</h3>
-              <div class="case__price">ориентир по лоту в переписке</div>
-              <p class="case__note">Реальное фото с карточки компании на Яндекс.Картах</p>
+              <div class="case__route">Япония → Иркутск</div>
+              <h3>Honda Freed</h3>
+              <div class="case__price">семейный минивэн · под ключ</div>
+              <p class="case__note">Фото с карточки на Яндекс.Картах</p>
             </div>
           </article>
 
@@ -1287,14 +1314,14 @@
             <div class="case__media">
               <picture>
                 <source srcset="images/delivery-01.webp" type="image/webp" />
-                <img src="images/delivery-01.jpg" alt="Honda Freed+ и другие выдачи — Путь Авто" width="1280" height="960" loading="lazy" decoding="async" />
+                <img src="images/delivery-01.jpg" alt="Honda Fit в наличии — витрина VK Путь Авто" width="1280" height="960" loading="lazy" decoding="async" />
               </picture>
             </div>
             <div class="case__body">
-              <div class="case__route">Япония → Иркутск</div>
-              <h3>Honda Freed+ и другие выдачи</h3>
-              <div class="case__price">под ключ · по курсу на дату покупки</div>
-              <p class="case__note">Клиенты отмечают чистоту и отсутствие скрытых окрасов</p>
+              <div class="case__route">VK Market</div>
+              <h3>Honda Fit</h3>
+              <div class="case__price">актуальная витрина · vk.ru/put_auto</div>
+              <p class="case__note">Фото товара из сообщества ВКонтакте</p>
             </div>
           </article>
 
@@ -1302,14 +1329,14 @@
             <div class="case__media">
               <picture>
                 <source srcset="images/case-03.webp" type="image/webp" />
-                <img src="images/case-03.jpg" alt="Семейные и городские модели — Путь Авто" width="960" height="720" loading="lazy" decoding="async" />
+                <img src="images/case-03.jpg" alt="Honda Freed, фронт — выдача Путь Авто" width="960" height="720" loading="lazy" decoding="async" />
               </picture>
             </div>
             <div class="case__body">
-              <div class="case__route">JP / KR / CN</div>
-              <h3>Семейные и городские модели</h3>
+              <div class="case__route">Япония → РФ</div>
+              <h3>Freed после осмотра</h3>
               <div class="case__price">бюджет согласуем до ставки</div>
-              <p class="case__note">Подбор по комплектации и аукционной оценке</p>
+              <p class="case__note">Правый руль, без пробега по РФ</p>
             </div>
           </article>
 
@@ -1317,14 +1344,14 @@
             <div class="case__media">
               <picture>
                 <source srcset="images/case-05.webp" type="image/webp" />
-                <img src="images/case-05.jpg" alt="Передача ключей в Иркутске — Путь Авто" width="960" height="1280" loading="lazy" decoding="async" />
+                <img src="images/case-05.jpg" alt="Передача ключей Subaru — Путь Авто" width="960" height="1280" loading="lazy" decoding="async" />
               </picture>
             </div>
             <div class="case__body">
               <div class="case__route">Выдача</div>
-              <h3>Передача ключей</h3>
-              <div class="case__price">Иркутск · ТЦ «Пассаж»</div>
-              <p class="case__note">Фотоотчёты на всём маршруте</p>
+              <h3>Ключи в руках</h3>
+              <div class="case__price">Иркутск · после детейлинга</div>
+              <p class="case__note">Subaru после маршрута JP → РФ</p>
             </div>
           </article>
 
@@ -1332,14 +1359,14 @@
             <div class="case__media">
               <picture>
                 <source srcset="images/delivery-03.webp" type="image/webp" />
-                <img src="images/delivery-03.jpg" alt="Свежие пригоны из Китая — Путь Авто" width="1280" height="960" loading="lazy" decoding="async" />
+                <img src="images/delivery-03.jpg" alt="Красный хэтчбек в зоне выдачи — Путь Авто" width="1280" height="960" loading="lazy" decoding="async" />
               </picture>
             </div>
             <div class="case__body">
-              <div class="case__route">Китай → РФ</div>
-              <h3>Свежие пригоны</h3>
+              <div class="case__route">Подготовка</div>
+              <h3>Перед передачей</h3>
               <div class="case__price">смета «под ключ» заранее</div>
-              <p class="case__note">Без пробега по РФ</p>
+              <p class="case__note">Зона осмотра и детейлинга</p>
             </div>
           </article>
 
@@ -1347,16 +1374,47 @@
             <div class="case__media">
               <picture>
                 <source srcset="images/case-06.webp" type="image/webp" />
-                <img src="images/case-06.jpg" alt="Сопровождение сделки в офисе — Путь Авто" width="960" height="1280" loading="lazy" decoding="async" />
+                <img src="images/case-06.jpg" alt="Honda Freed+ сзади — Путь Авто" width="960" height="1280" loading="lazy" decoding="async" />
               </picture>
             </div>
             <div class="case__body">
-              <div class="case__route">Офис</div>
-              <h3>Сопровождение сделки</h3>
-              <div class="case__price">договор · фикс услуг</div>
-              <p class="case__note">Офис 323, 3 этаж</p>
+              <div class="case__route">Япония → Иркутск</div>
+              <h3>Honda Freed+</h3>
+              <div class="case__price">модель из открытых отзывов</div>
+              <p class="case__note">Клиенты отмечают чистоту после детейлинга</p>
             </div>
           </article>
+        </div>
+
+        <div class="filmstrip reveal" aria-label="Дополнительные фото выдач">
+          <figure>
+            <picture>
+              <source srcset="images/gallery-06.webp" type="image/webp" />
+              <img src="images/gallery-06.jpg" alt="Tank 300 — витрина VK Путь Авто" width="1400" height="900" loading="lazy" decoding="async" />
+            </picture>
+            <figcaption>Tank 300 · VK Market</figcaption>
+          </figure>
+          <figure>
+            <picture>
+              <source srcset="images/gallery-05.webp" type="image/webp" />
+              <img src="images/gallery-05.jpg" alt="Honda Fit — витрина VK" width="1400" height="900" loading="lazy" decoding="async" />
+            </picture>
+            <figcaption>Honda Fit · VK Market</figcaption>
+          </figure>
+          <figure>
+            <picture>
+              <source srcset="images/gallery-01.webp" type="image/webp" />
+              <img src="images/gallery-01.jpg" alt="Авто на площадке логистики с защитной плёнкой" width="1400" height="900" loading="lazy" decoding="async" />
+            </picture>
+            <figcaption>Логистика · защитная плёнка</figcaption>
+          </figure>
+          <figure>
+            <picture>
+              <source srcset="images/gallery-04.webp" type="image/webp" />
+              <img src="images/gallery-04.jpg" alt="Toyota Corolla Cross с бантом на выдаче" width="1400" height="900" loading="lazy" decoding="async" />
+            </picture>
+            <figcaption>Выдача · Corolla Cross</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -1366,8 +1424,8 @@
         <div class="office-strip reveal">
           <div class="office-media">
             <picture>
-              <source srcset="images/delivery-03.webp" type="image/webp" />
-              <img src="images/delivery-03.jpg" alt="Автомобиль перед выдачей — Путь Авто, Иркутск" width="1280" height="1600" loading="lazy" decoding="async" />
+              <source srcset="images/office-01.webp" type="image/webp" />
+              <img src="images/office-01.jpg" alt="ТЦ Пассаж, ул. Дзержинского — офис Путь Авто, Иркутск" width="1280" height="960" loading="lazy" decoding="async" />
             </picture>
           </div>
           <div class="office-copy">

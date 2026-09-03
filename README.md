@@ -38,4 +38,9 @@ Workflow: `.github/workflows/deploy-pages.yml` собирает `_site/` из к
 
 ## Медиа
 
-Фото взяты из публичной галереи / отзывов карточки на Яндекс.Картах.
+Реальные фото с публичных источников:
+
+- галерея Яндекс.Карт [put_avto](https://yandex.ru/maps/org/put_avto/119194473567/gallery/)
+- витрина VK Market сообщества [put_auto](https://vk.ru/put_auto) (Honda Fit, Kia Stonic, Tank 300)
+
+Полные альбомы VK без авторизации недоступны — в лендинг попали только публично открытые кадры.
