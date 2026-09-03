@@ -79,7 +79,8 @@
       color: var(--paper);
       font-family: "IBM Plex Sans", system-ui, sans-serif;
       line-height: 1.55;
-      overflow-x: hidden;
+      overflow-x: clip;
+      max-width: 100%;
     }
 
     ::selection { background: var(--signal); color: #fff; }
@@ -162,11 +163,16 @@
       inset: 0;
       z-index: -2;
     }
+    .hero__media picture {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
     .hero__media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 62% center;
+      object-position: 58% 40%;
     }
     .hero__veil {
       position: absolute;
@@ -186,6 +192,40 @@
       color: var(--paper);
     }
     .hero__brand span { color: var(--signal); }
+    .hero__cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.75rem;
+    }
+    .hero__cta .btn {
+      flex: 1 1 auto;
+      min-width: min(100%, 12rem);
+    }
+    @media (min-width: 769px) {
+      .hero__cta .btn { white-space: nowrap; }
+    }
+    .hero__lede-short { display: none; }
+    .hero__content {
+      position: relative;
+      padding-top: clamp(5.5rem, 14vw, 9rem);
+      padding-bottom: clamp(2.5rem, 5vw, 4rem);
+    }
+    .hero__title {
+      font-size: clamp(1.35rem, 3.8vw, 2.15rem);
+      line-height: 1.35;
+      overflow-wrap: break-word;
+      word-break: normal;
+      white-space: normal;
+      max-width: 100%;
+    }
+    .lede {
+      color: var(--mute);
+      overflow-wrap: break-word;
+      white-space: normal;
+      max-width: min(38rem, 100%);
+      margin: 0.75rem 0 0;
+    }
 
     .section { padding: clamp(4rem, 8vw, 7rem) 0; }
     .eyebrow {
@@ -196,7 +236,6 @@
       margin: 0 0 0.75rem;
       font-weight: 600;
     }
-    .lede { color: var(--mute); max-width: 38rem; margin: 0.75rem 0 0; }
 
     .trust-rail {
       display: grid;
@@ -709,15 +748,15 @@
       bottom: 0;
       z-index: 70;
       display: none;
-      padding: 0.65rem 0.85rem calc(0.65rem + env(safe-area-inset-bottom));
+      padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom, 0px));
       background: rgba(14, 17, 20, 0.92);
       backdrop-filter: blur(12px);
       border-top: 1px solid var(--line);
     }
-    .mobile-wa .btn { width: 100%; border-radius: var(--radius-md); }
+    .mobile-wa .btn { width: 100%; border-radius: var(--radius-md); min-height: 48px; }
     @media (max-width: 768px) {
       .mobile-wa { display: block; }
-      body { padding-bottom: 4.5rem; }
+      body { padding-bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px)); }
     }
 
     .nav-desktop a {
@@ -748,13 +787,176 @@
       .reveal { opacity: 1; transform: none; }
     }
 
-    .container {
-      width: min(1200px, calc(100% - 2rem));
+    .shell {
+      width: min(1200px, calc(100% - 2.5rem));
       margin-inline: auto;
     }
-    .container--wide {
-      width: min(1480px, calc(100% - 1.25rem));
+    .shell--wide {
+      width: min(1480px, calc(100% - 1.5rem));
       margin-inline: auto;
+    }
+
+    /* —— Mobile layout (phones ≤768px) —— */
+    @media (max-width: 768px) {
+      .shell {
+        width: min(1200px, calc(100% - 2.25rem));
+      }
+      .shell--wide {
+        width: min(1480px, calc(100% - 1.5rem));
+      }
+
+      .hero {
+        min-height: 100svh;
+        min-height: 100dvh;
+        align-items: end;
+        padding-bottom: calc(5.75rem + env(safe-area-inset-bottom, 0px));
+      }
+      .hero__media img {
+        object-position: 48% 28%;
+      }
+      .hero__veil {
+        background:
+          linear-gradient(180deg, rgba(14,17,20,0.48) 0%, rgba(14,17,20,0.68) 40%, rgba(14,17,20,0.98) 100%),
+          linear-gradient(90deg, rgba(14,17,20,0.82) 0%, rgba(14,17,20,0.45) 70%, rgba(14,17,20,0.55) 100%);
+      }
+      .hero__content {
+        padding-top: 4.75rem;
+        padding-bottom: 1.35rem;
+      }
+      .hero__brand {
+        font-size: clamp(1.9rem, 9.5vw, 2.35rem);
+        margin: 0 0 0.75rem;
+        line-height: 0.95;
+      }
+      .hero__title {
+        font-size: 1.08rem;
+        line-height: 1.45;
+        max-width: 100%;
+      }
+      .hero__lede-full { display: none; }
+      .hero__lede-short { display: inline; }
+      .hero .lede,
+      .hero__lede {
+        margin-top: 0.9rem;
+        font-size: 0.92rem;
+        line-height: 1.55;
+        max-width: 100%;
+      }
+      .hero__cta {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.25rem;
+        width: 100%;
+        max-width: 100%;
+      }
+      .hero__cta .btn {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+        min-height: 48px;
+        white-space: normal;
+        text-align: center;
+        padding: 0.85rem 1rem;
+        box-sizing: border-box;
+      }
+      .hero__cta .btn--ghost {
+        display: inline-flex;
+        background: rgba(14, 17, 20, 0.88);
+        border-color: rgba(232, 228, 220, 0.5);
+        color: var(--paper) !important;
+      }
+
+      .trust-rail > * { padding: 1.1rem 1.05rem; }
+      .trust-rail strong { font-size: 1.3rem; overflow-wrap: anywhere; }
+
+      .section { padding: 3.25rem 0; }
+
+      .services-board,
+      .calc-shell,
+      .cases-editorial,
+      .contact-grid,
+      .office-strip,
+      .service-cell,
+      .calc-panel,
+      .calc-result,
+      .contact-panel,
+      .form,
+      .case {
+        min-width: 0;
+      }
+
+      .cases-editorial {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .case:nth-child(1),
+      .case:nth-child(4),
+      .case:nth-child(5) {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .choice-grid { grid-template-columns: 1fr; }
+      .choice span {
+        min-height: 48px;
+        padding: 0.65rem 0.75rem;
+        text-align: center;
+      }
+      .select, .input, .textarea {
+        max-width: 100%;
+        min-width: 0;
+      }
+
+      .review { grid-template-columns: 1fr; }
+      .review footer { order: 2; }
+
+      .office-copy__actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .office-copy__actions .btn { width: 100%; }
+
+      .form__row { grid-template-columns: 1fr; }
+
+      .faq summary {
+        font-size: 1rem;
+        gap: 0.75rem;
+        overflow-wrap: anywhere;
+      }
+
+      .site-footer {
+        padding: 2rem 0 calc(6.75rem + env(safe-area-inset-bottom, 0px));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__brand {
+        font-size: clamp(1.85rem, 10vw, 2.2rem);
+      }
+      .path-step { padding-left: 1rem; }
+      .calc-summary li {
+        flex-wrap: wrap;
+        gap: 0.25rem 0.75rem;
+      }
+    }
+
+    img, picture, iframe, video, svg { max-width: 100%; }
+    .hero__media img {
+      max-width: none;
+      width: 100%;
+      height: 100%;
+    }
+    .calc-shell > *,
+    .form > *,
+    .services-board > *,
+    .cases-editorial > *,
+    .contact-grid > *,
+    .office-strip > * {
+      min-width: 0;
     }
   </style>
 
@@ -807,7 +1009,7 @@
   </a>
 
   <header class="site-header">
-    <div class="container flex items-center justify-between gap-4 py-3">
+    <div class="shell flex items-center justify-between gap-4 py-3">
       <a href="#top" class="font-display font-bold text-lg tracking-tight no-underline hover:text-paper" aria-label="Путь Авто — наверх">
         Путь Авто
       </a>
@@ -829,7 +1031,7 @@
         <a class="btn hidden sm:inline-flex text-sm !min-h-[40px] !py-2" href="https://wa.me/79501444418?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%20%D0%B0%D0%B2%D1%82%D0%BE%20%D0%BF%D0%BE%D0%B4%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7." rel="noopener noreferrer" target="_blank">WhatsApp</a>
         <button
           type="button"
-          class="md:hidden border border-line px-3 py-2 text-sm"
+          class="md:hidden border border-line px-3 py-2 text-sm shrink-0"
           data-menu-toggle
           aria-expanded="false"
           aria-controls="mobile-nav"
@@ -860,19 +1062,20 @@
       </div>
       <div class="hero__veil" aria-hidden="true"></div>
 
-      <div class="container relative pb-10 pt-28 sm:pt-36 md:pb-16">
-        <div class="sm:hidden flex items-center gap-2 text-xs text-mute mb-4">
+      <div class="shell hero__content">
+        <div class="sm:hidden flex items-center gap-2 text-xs text-mute mb-5">
           <span class="pulse-dot" aria-hidden="true"></span>
           <span>принимаем заявки · Иркутск</span>
         </div>
         <p class="hero__brand" data-hero-brand>Путь <span>Авто</span></p>
-        <h1 id="hero-title" class="font-display text-[clamp(1.35rem,3.8vw,2.15rem)] font-semibold leading-snug max-w-2xl m-0" data-hero-title>
+        <h1 id="hero-title" class="hero__title font-display font-semibold m-0" data-hero-title>
           Авто из Японии, Кореи и Китая — смета под ключ до ставки
         </h1>
-        <p class="lede mt-4 max-w-xl" data-hero-lede>
-          Подбор лота, аукцион, таможня и доставка. Вы получаете понятный маршрут и машину без пробега по РФ — с выдачей в Иркутске.
+        <p class="lede hero__lede" data-hero-lede>
+          <span class="hero__lede-full">Подбор лота, аукцион, таможня и доставка. Вы получаете понятный маршрут и машину без пробега по РФ — с выдачей в Иркутске.</span>
+          <span class="hero__lede-short">Подбор, аукцион, таможня и доставка — понятный маршрут до выдачи в Иркутске.</span>
         </p>
-        <div class="flex flex-wrap gap-3 mt-7" data-hero-cta>
+        <div class="hero__cta" data-hero-cta>
           <a class="btn" href="#calc">Собрать бриф</a>
           <a class="btn btn--ghost" href="https://wa.me/79501444418?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D0%BE%D0%B4%D0%BE%D0%B1%D1%80%D0%B0%D1%82%D1%8C%20%D0%B0%D0%B2%D1%82%D0%BE%20%D0%BF%D0%BE%D0%B4%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7." rel="noopener noreferrer" target="_blank">Написать в WhatsApp</a>
         </div>
@@ -887,7 +1090,7 @@
     </section>
 
     <section class="section" id="path" aria-labelledby="path-title">
-      <div class="container">
+      <div class="shell">
         <div class="reveal mb-10 max-w-2xl">
           <p class="eyebrow">Маршрутный лист</p>
           <h2 id="path-title" class="font-display text-3xl md:text-4xl font-bold m-0">Как устроен путь авто</h2>
@@ -942,7 +1145,7 @@
     </section>
 
     <section class="section pt-0" id="services" aria-labelledby="services-title">
-      <div class="container">
+      <div class="shell">
         <div class="reveal mb-10 max-w-2xl">
           <p class="eyebrow">Услуги</p>
           <h2 id="services-title" class="font-display text-3xl md:text-4xl font-bold m-0">Единое окно: от аукциона до ключей</h2>
@@ -980,7 +1183,7 @@
     </section>
 
     <section class="section" id="calc" aria-labelledby="calc-title" style="background: linear-gradient(180deg, transparent, rgba(196,92,38,0.04), transparent);">
-      <div class="container">
+      <div class="shell">
         <div class="reveal mb-10 max-w-2xl">
           <p class="eyebrow">Маршрутный лист</p>
           <h2 id="calc-title" class="font-display text-3xl md:text-4xl font-bold m-0">Собрать бриф</h2>
@@ -1057,7 +1260,7 @@
     </section>
 
     <section class="section" id="cases" aria-labelledby="cases-title">
-      <div class="container">
+      <div class="shell">
         <div class="reveal mb-10 max-w-2xl">
           <p class="eyebrow">Выдачи</p>
           <h2 id="cases-title" class="font-display text-3xl md:text-4xl font-bold m-0">Реальные машины, не сток</h2>
@@ -1159,7 +1362,7 @@
     </section>
 
     <section class="section pt-0" aria-labelledby="office-title">
-      <div class="container--wide">
+      <div class="shell--wide">
         <div class="office-strip reveal">
           <div class="office-media">
             <picture>
@@ -1193,7 +1396,7 @@
     </section>
 
     <section class="section" id="reviews" aria-labelledby="reviews-title">
-      <div class="container">
+      <div class="shell">
         <div class="reveal mb-8 max-w-2xl">
           <p class="eyebrow">Отзывы</p>
           <h2 id="reviews-title" class="font-display text-3xl md:text-4xl font-bold m-0">Слова клиентов, не скрипты</h2>
@@ -1230,7 +1433,7 @@
     </section>
 
     <section class="section pt-0" id="faq" aria-labelledby="faq-title">
-      <div class="container">
+      <div class="shell">
         <div class="reveal mb-8 max-w-2xl">
           <p class="eyebrow">FAQ</p>
           <h2 id="faq-title" class="font-display text-3xl md:text-4xl font-bold m-0">Частые вопросы</h2>
@@ -1263,7 +1466,7 @@
     </section>
 
     <section class="section" id="contacts" aria-labelledby="contacts-title">
-      <div class="container">
+      <div class="shell">
         <div class="reveal mb-10 max-w-2xl">
           <p class="eyebrow">Контакты</p>
           <h2 id="contacts-title" class="font-display text-3xl md:text-4xl font-bold m-0">Офис в Иркутске</h2>
@@ -1344,7 +1547,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <div class="shell flex flex-col md:flex-row md:items-end justify-between gap-4">
       <div>
         <div class="font-display text-paper text-lg font-bold">Путь Авто</div>
         <p class="m-0 mt-1">Иркутск · авто из Японии, Кореи и Китая под заказ</p>
