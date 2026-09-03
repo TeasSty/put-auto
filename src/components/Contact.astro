@@ -1,0 +1,93 @@
+---
+const phoneDisplay = '+7 (950) 144-44-18';
+---
+
+<section class="section" id="contacts" aria-labelledby="contacts-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Контакты</p>
+      <h2 id="contacts-title">Офис в Иркутске</h2>
+      <p class="lede">ТЦ «Пассаж» — входы со стороны ул. Дзержинского и ул. Литвинова. Офис 323, 3 этаж.</p>
+    </div>
+
+    <div class="contact reveal">
+      <div class="contact__panel">
+        <div class="contact__row">
+          <span>Адрес</span>
+          <strong>г. Иркутск, ул. Дзержинского, 32 стр. 1, офис 323, ТЦ «Пассаж»</strong>
+        </div>
+        <div class="contact__row">
+          <span>Телефон</span>
+          <a href="tel:+79501444418">{phoneDisplay}</a>
+        </div>
+        <div class="contact__row">
+          <span>Мессенджеры</span>
+          <div>
+            <a href="https://wa.me/79501444418" rel="noopener noreferrer" target="_blank">WhatsApp</a>
+            ·
+            <a href="https://t.me/putavto38" rel="noopener noreferrer" target="_blank">Telegram</a>
+            ·
+            <a href="https://vk.ru/put_auto" rel="noopener noreferrer" target="_blank">VK</a>
+          </div>
+        </div>
+        <div class="contact__row">
+          <span>Часы</span>
+          <strong>ежедневно 09:00–21:00</strong>
+        </div>
+
+        <div class="map-embed">
+          <iframe
+            title="Путь Авто на карте"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://yandex.ru/map-widget/v1/?ol=biz&oid=119194473567&z=17&ll=104.293003%2C52.281170"
+          ></iframe>
+        </div>
+      </div>
+
+      <form
+        class="form"
+        name="lead"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        data-lead-form
+      >
+        <input type="hidden" name="form-name" value="lead" />
+        <p class="hp">
+          <label>Не заполняйте: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+        </p>
+
+        <h3>Заявка на подбор</h3>
+        <p class="calc__hint" style="margin:0">
+          Отправим на Netlify Forms при деплое на Netlify. Если бэкенд недоступен — откроется WhatsApp
+          с предзаполненным текстом.
+        </p>
+
+        <div class="form__row">
+          <div class="field">
+            <label for="name">Имя</label>
+            <input class="input" id="name" name="name" type="text" autocomplete="name" required minlength="2" />
+          </div>
+          <div class="field">
+            <label for="phone">Телефон</label>
+            <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+7 ..." />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="budget">Бюджет / модель</label>
+          <input class="input" id="budget" name="budget" type="text" placeholder="Например: Mazda Axela до 1.1 млн" />
+        </div>
+
+        <div class="field">
+          <label for="message">Комментарий</label>
+          <textarea class="textarea" id="message" name="message" placeholder="Страна, срок, пожелания"></textarea>
+        </div>
+
+        <button class="btn btn--block" type="submit" data-submit>Отправить заявку</button>
+        <p class="form__status" data-form-status role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>

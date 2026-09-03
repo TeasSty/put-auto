@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Страница не найдена — Путь Авто" description="Запрошенная страница не существует.">
+  <main class="section" id="main" style="min-height:70vh;display:grid;align-content:center">
+    <div class="container" style="display:grid;gap:1rem;max-width:32rem">
+      <p class="eyebrow">404</p>
+      <h1>Страница не найдена</h1>
+      <p class="lede">Вернитесь на главную или напишите нам в WhatsApp — подберём авто без лишних страниц.</p>
+      <div class="hero__actions">
+        <a class="btn" href={base}>На главную</a>
+        <a class="btn btn--ghost" href="https://wa.me/79501444418" rel="noopener noreferrer" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

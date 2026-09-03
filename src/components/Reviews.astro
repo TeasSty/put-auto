@@ -1,0 +1,51 @@
+---
+const reviews = [
+  {
+    quote:
+      'Артем с большим пониманием подошёл к подбору. На всём пути от выбора до выдачи ключей были на связи, присылали фото. Машина оказалась лучше, чем ожидала.',
+    author: 'Анастасия К.',
+    meta: 'Яндекс.Карты',
+  },
+  {
+    quote:
+      'Александр выиграл на аукционе Honda Freed+. Через месяц с небольшим машина была в Иркутске, ждала в детейлинге Путь Авто — помытая, отполированная, без окрасов и замен.',
+    author: 'Наталия С.',
+    meta: 'Яндекс.Карты',
+  },
+  {
+    quote:
+      'Прозрачность на всех этапах: стоимость доставки, растаможки и услуг озвучили сразу. Нашли лучший вариант по цене/состоянию/комплектации и объяснили мелкие риски по фото.',
+    author: 'Матвей Степ.',
+    meta: 'Яндекс.Карты · Toyota Corolla Sport',
+  },
+];
+
+const source = 'https://yandex.ru/maps/org/put_avto/119194473567/reviews/';
+---
+
+<section class="section" id="reviews" aria-labelledby="reviews-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Отзывы</p>
+      <h2 id="reviews-title">Слова клиентов, не скрипты</h2>
+      <p class="lede">
+        Цитаты с публичной карточки на Яндекс.Картах (рейтинг 5,0). Полные тексты —
+        <a href={source} rel="noopener noreferrer" target="_blank">по ссылке</a>.
+      </p>
+    </div>
+
+    <div class="reviews">
+      {reviews.map((r) => (
+        <article class="review reveal">
+          <blockquote>«{r.quote}»</blockquote>
+          <footer>
+            <strong>{r.author}</strong>
+            <div>
+              <a href={source} rel="noopener noreferrer" target="_blank">{r.meta}</a>
+            </div>
+          </footer>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

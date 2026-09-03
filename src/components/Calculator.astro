@@ -1,0 +1,86 @@
+---
+---
+
+<section class="section" id="calc" aria-labelledby="calc-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Signature</p>
+      <h2 id="calc-title">Калькулятор пути</h2>
+      <p class="lede">
+        Четыре шага — и готовое сообщение менеджеру. Это ориентир по маршруту и экономии, не финальная
+        цена авто: точную смету считаем после брифа.
+      </p>
+    </div>
+
+    <div class="calc reveal" data-calc>
+      <div class="calc__steps">
+        <div class="field">
+          <label id="country-label">Страна</label>
+          <div class="choice-grid" role="radiogroup" aria-labelledby="country-label">
+            <label class="choice">
+              <input type="radio" name="country" value="Япония" data-calc-country checked />
+              <span>Япония</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="country" value="Корея" data-calc-country />
+              <span>Корея</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="country" value="Китай" data-calc-country />
+              <span>Китай</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="calc-budget">Бюджет «под ключ»</label>
+          <select class="select" id="calc-budget" data-calc-budget>
+            <option value="до 900 000 ₽">до 900 000 ₽</option>
+            <option value="900 000 – 1 500 000 ₽" selected>900 000 – 1 500 000 ₽</option>
+            <option value="1 500 000 – 2 500 000 ₽">1 500 000 – 2 500 000 ₽</option>
+            <option value="от 2 500 000 ₽">от 2 500 000 ₽</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="calc-body">Тип кузова</label>
+          <select class="select" id="calc-body" data-calc-body>
+            <option value="Хэтчбек / компакт">Хэтчбек / компакт</option>
+            <option value="Седан" selected>Седан</option>
+            <option value="Кроссовер / SUV">Кроссовер / SUV</option>
+            <option value="Минивэн / семейный">Минивэн / семейный</option>
+            <option value="Другое">Другое</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="calc-term">Желаемый срок</label>
+          <select class="select" id="calc-term" data-calc-term>
+            <option value="как можно скорее">как можно скорее</option>
+            <option value="1–1,5 месяца" selected>1–1,5 месяца</option>
+            <option value="до 2–3 месяцев">до 2–3 месяцев</option>
+            <option value="не срочно, важнее цена">не срочно, важнее цена</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc__result" aria-live="polite">
+        <h3>Ваш маршрутный лист</h3>
+        <div class="calc__estimate" data-calc-estimate>экономия ориентир 150–350 тыс. ₽</div>
+        <ul class="calc__list" data-calc-route></ul>
+        <p class="calc__hint">
+          Ориентир экономии — из публичных материалов компании (150–500 тыс. ₽). Итог зависит от лота,
+          курса и комплектации. Стоимость услуг фиксируется в договоре.
+        </p>
+        <div class="calc__actions">
+          <a class="btn btn--block" data-calc-wa href="https://wa.me/79501444418" rel="noopener noreferrer" target="_blank">
+            Отправить бриф в WhatsApp
+          </a>
+          <a class="btn btn--ghost btn--block" data-calc-tg href="https://t.me/putavto38" rel="noopener noreferrer" target="_blank">
+            Написать в Telegram
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

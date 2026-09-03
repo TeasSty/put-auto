@@ -1,0 +1,19 @@
+---
+const items = [
+  { value: '5,0', label: 'рейтинг Яндекс.Карт · 50+ оценок' },
+  { value: '400+', label: 'автомобилей из JP / KR / CN' },
+  { value: '150–500 тыс. ₽', label: 'ориентир экономии vs вторичка РФ' },
+  { value: '09:00–21:00', label: 'ежедневно · Иркутск' },
+];
+---
+
+<section class="trust" aria-label="Доверие">
+  <div class="container trust__grid">
+    {items.map((item) => (
+      <div class="trust__item">
+        <div class="trust__value">{item.value}</div>
+        <div class="trust__label">{item.label}</div>
+      </div>
+    ))}
+  </div>
+</section>

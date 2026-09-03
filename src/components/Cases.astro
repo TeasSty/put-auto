@@ -1,0 +1,105 @@
+---
+const base = import.meta.env.BASE_URL;
+
+const cases = [
+  {
+    img: 'case-01.webp',
+    fallback: 'case-01.jpg',
+    w: 1280,
+    h: 960,
+    route: 'Китай → РФ',
+    title: 'Авто из наличия / под заказ',
+    price: 'ориентир по лоту в переписке',
+    note: 'Реальное фото с карточки компании на Яндекс.Картах',
+  },
+  {
+    img: 'delivery-01.webp',
+    fallback: 'delivery-01.jpg',
+    w: 1280,
+    h: 960,
+    route: 'Япония → Иркутск',
+    title: 'Honda Freed+ и другие выдачи',
+    price: 'под ключ · по курсу на дату покупки',
+    note: 'Клиенты отмечают чистоту и отсутствие скрытых окрасов',
+  },
+  {
+    img: 'case-03.webp',
+    fallback: 'case-03.jpg',
+    w: 960,
+    h: 720,
+    route: 'JP / KR / CN',
+    title: 'Семейные и городские модели',
+    price: 'бюджет согласуем до ставки',
+    note: 'Подбор по комплектации и аукционной оценке',
+  },
+  {
+    img: 'case-05.webp',
+    fallback: 'case-05.jpg',
+    w: 960,
+    h: 1280,
+    route: 'Выдача',
+    title: 'Передача ключей',
+    price: 'Иркутск · ТЦ «Пассаж»',
+    note: 'Фотоотчёты на всём маршруте',
+  },
+  {
+    img: 'delivery-03.webp',
+    fallback: 'delivery-03.jpg',
+    w: 1280,
+    h: 960,
+    route: 'Китай → РФ',
+    title: 'Свежие пригоны',
+    price: 'смета «под ключ» заранее',
+    note: 'Без пробега по РФ',
+  },
+  {
+    img: 'case-06.webp',
+    fallback: 'case-06.jpg',
+    w: 960,
+    h: 1280,
+    route: 'Офис',
+    title: 'Сопровождение сделки',
+    price: 'договор · фикс услуг',
+    note: 'Офис 323, 3 этаж',
+  },
+];
+---
+
+<section class="section" id="cases" aria-labelledby="cases-title">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Выдачи</p>
+      <h2 id="cases-title">Реальные машины, не сток</h2>
+      <p class="lede">
+        Фотографии с публичной галереи и отзывов «Путь Авто» на Яндекс.Картах. Цены лотов всегда
+        считаем индивидуально под курс и маршрут.
+      </p>
+    </div>
+
+    <div class="cases">
+      {cases.map((item) => (
+        <article class="case reveal">
+          <div class="case__media">
+            <picture>
+              <source srcset={`${base}images/${item.img}`} type="image/webp" />
+              <img
+                src={`${base}images/${item.fallback}`}
+                alt={`${item.title} — Путь Авто`}
+                width={item.w}
+                height={item.h}
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+          </div>
+          <div class="case__body">
+            <div class="case__route">{item.route}</div>
+            <h3>{item.title}</h3>
+            <div class="case__price">{item.price}</div>
+            <p class="case__note">{item.note}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

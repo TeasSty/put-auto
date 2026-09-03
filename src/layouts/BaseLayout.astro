@@ -1,0 +1,88 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Путь Авто — авто из Японии, Кореи и Китая в Иркутск',
+  description = 'Подбор и доставка автомобилей из Японии, Южной Кореи и Китая под заказ. Цена под ключ заранее, договор, сопровождение до выдачи в Иркутске.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL(`${import.meta.env.BASE_URL}images/hero-wide.webp`.replace(/\/+/g, '/').replace('https:/', 'https://'), Astro.site ?? 'https://teassty.github.io').href;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'AutomotiveBusiness',
+  name: 'Путь Авто',
+  description,
+  url: Astro.site ? new URL(import.meta.env.BASE_URL, Astro.site).toString() : 'https://teassty.github.io/put-auto/',
+  telephone: '+79501444418',
+  image: ogImage,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'ул. Дзержинского, 32 стр. 1, офис 323, ТЦ «Пассаж»',
+    addressLocality: 'Иркутск',
+    addressRegion: 'Иркутская область',
+    postalCode: '664003',
+    addressCountry: 'RU',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 52.28117,
+    longitude: 104.293003,
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '09:00',
+    closes: '21:00',
+  },
+  sameAs: [
+    'https://vk.ru/put_auto',
+    'https://t.me/putavto38',
+    'https://www.youtube.com/@putavto138',
+  ],
+  areaServed: 'RU',
+  priceRange: '₽₽',
+};
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0E1114" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">К содержимому</a>
+    <slot />
+  </body>
+</html>
